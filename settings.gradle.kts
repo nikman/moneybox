@@ -15,3 +15,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "moneybox"
 include(":app")
+include(":core")
+include(":core_api")
+include(":core_impl")
+include(":home")
