@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">moneybox</string>
+    <string name="app_name">Moneybox</string>
     <string name="title_home">Home</string>
     <string name="title_reports">Reports</string>
     <string name="title_currencies">Currencies</string>
