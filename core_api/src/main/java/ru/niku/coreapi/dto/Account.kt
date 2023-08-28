@@ -12,17 +12,15 @@ data class Account(
     //@NotNull
     //@ColumnInfo(name = "currency_id", defaultValue = UUID_CURRENCY_RUB)
     //var currency_id: UUID,
-    @PrimaryKey val account_id: Long,
+    @PrimaryKey(autoGenerate = true) val account_id: Long = 0,
     val title: String = "",
-    /*var initial_balance: Double = 0.0,
-    var balance: Double = 0.0,
     var note: String = "",
     var is_active: Boolean = true,
     var is_include_into_totals: Boolean = true,
-    var sort_order: Int = 0,*/
+    var sort_order: Int = 0,
     val account_external_id: Int = 0
 ) {
-    /*override fun toString(): String {
+    override fun toString(): String {
         return "$title $note"
-    }*/
+    }
 }

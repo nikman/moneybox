@@ -8,5 +8,7 @@ interface MediatorsProvider {
 
     fun provideHomeMediator(): HomeMediator
 
+    fun provideReportsMediator(): ReportsMediator
+
     fun mediatorsMap(): Map<Class<*>, @JvmSuppressWildcards Provider<Any>>
 }

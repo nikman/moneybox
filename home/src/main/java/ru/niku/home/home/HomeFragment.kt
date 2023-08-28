@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
 
     companion object {
         fun newInstance(): Fragment {
-            TODO("Not yet implemented")
+            return HomeFragment()
         }
     }
 }
