@@ -17,9 +17,14 @@
             <option value="$PROJECT_DIR$/core_impl" />
             <option value="$PROJECT_DIR$/create_account" />
             <option value="$PROJECT_DIR$/create_account_api" />
+            <option value="$PROJECT_DIR$/currencies" />
             <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/main" />
+            <option value="$PROJECT_DIR$/network" />
+            <option value="$PROJECT_DIR$/network_api" />
+            <option value="$PROJECT_DIR$/network_impl" />
             <option value="$PROJECT_DIR$/reports" />
+            <option value="$PROJECT_DIR$/wallet" />
           </set>
         </option>
       </GradleProjectSettings>

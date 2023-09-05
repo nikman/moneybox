@@ -10,5 +10,9 @@ interface MediatorsProvider {
 
     fun provideReportsMediator(): ReportsMediator
 
+    fun provideCurrenciesMediator(): CurrenciesMediator
+
+    fun provideWalletMediator(): WalletMediator
+
     fun mediatorsMap(): Map<Class<*>, @JvmSuppressWildcards Provider<Any>>
 }

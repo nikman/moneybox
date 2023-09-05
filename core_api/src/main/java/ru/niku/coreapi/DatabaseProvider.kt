@@ -4,4 +4,6 @@ interface DatabaseProvider {
 
     fun provideDatabase(): MoneyboxDatabaseContract
 
+    fun moneyboxDao(): MoneyboxDao
+
 }

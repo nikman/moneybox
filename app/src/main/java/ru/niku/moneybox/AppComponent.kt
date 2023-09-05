@@ -9,6 +9,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
+    //modules = [AppModule::class, NetworkModule::class]
     modules = [AppModule::class]
 )
 interface AppComponent : AppProvider {

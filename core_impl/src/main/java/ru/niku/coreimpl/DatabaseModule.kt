@@ -5,6 +5,8 @@ import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import ru.niku.coreapi.MoneyboxDao
 import ru.niku.coreapi.MoneyboxDatabaseContract
 import javax.inject.Singleton
@@ -28,4 +30,5 @@ class DatabaseModule {
             MoneyboxDatabase::class.java, DATABASE_NAME
         ).build()
     }
+
 }

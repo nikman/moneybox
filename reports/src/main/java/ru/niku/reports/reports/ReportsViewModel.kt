@@ -10,11 +10,13 @@ import javax.inject.Inject
 class ReportsViewModel constructor(private val moneyboxDao: MoneyboxDao): ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "This is reports Fragment"
     }
     val text: LiveData<String> = _text
+
 }
 
+@Suppress("UNCHECKED_CAST")
 class ReportsViewModelFactory @Inject constructor(
     private val moneyboxDao: MoneyboxDao
 ) : ViewModelProvider.Factory {
@@ -23,3 +25,4 @@ class ReportsViewModelFactory @Inject constructor(
         return ReportsViewModel(moneyboxDao) as T
     }
 }
+

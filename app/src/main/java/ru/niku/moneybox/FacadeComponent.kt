@@ -7,9 +7,10 @@ import ru.niku.coreapi.AppProvider
 import ru.niku.coreapi.DatabaseProvider
 import ru.niku.coreapi.ProvidersFacade
 import ru.niku.create_account.CreateAccountExternalModule
+import ru.niku.coreapi.NetworkProvider
 
 @Component(
-    dependencies = [AppProvider::class, DatabaseProvider::class],
+    dependencies = [AppProvider::class, DatabaseProvider::class, NetworkProvider::class],
     modules = [MediatorsBindings::class, CreateAccountExternalModule::class]
 )
 interface FacadeComponent : ProvidersFacade {
@@ -20,6 +21,7 @@ interface FacadeComponent : ProvidersFacade {
         DaggerFacadeComponent.builder()
              .appProvider(AppComponent.create(application))
              .databaseProvider(CoreProviders.createDatabaseBuilder(AppComponent.create(application)))
+            .networkProvider(CoreProviders.createNetworkBuilder(AppComponent.create(application)))
              .build()
      }
 }

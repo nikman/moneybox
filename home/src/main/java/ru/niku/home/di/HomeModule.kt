@@ -5,9 +5,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import ru.niku.create_account_api.CreateAccountMediator
-import ru.niku.home.HomeViewModelFactory
+import ru.niku.home.home.HomeViewModelFactory
 import javax.inject.Provider
-import javax.inject.Singleton
 
 @Module
 interface HomeModule {

@@ -22,6 +22,6 @@ interface ReportsComponent {
         }
     }
 
-    fun inject(homeFragment: ReportsFragment)
+    fun inject(reportsFragment: ReportsFragment)
 
 }

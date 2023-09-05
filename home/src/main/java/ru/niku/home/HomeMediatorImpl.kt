@@ -5,12 +5,11 @@ import ru.niku.coreapi.HomeMediator
 import ru.niku.home.home.HomeFragment
 import javax.inject.Inject
 
-class HomeMediatorImpl
-@Inject constructor() : HomeMediator {
+class HomeMediatorImpl @Inject constructor() : HomeMediator {
 
     override fun startHomeScreen(containerId: Int, fragmentManager: FragmentManager) {
         fragmentManager.beginTransaction()
-            .add(containerId, HomeFragment.newInstance())
+            .replace(containerId, HomeFragment.newInstance())
             .commit()
     }
 }

@@ -8,7 +8,7 @@ import javax.inject.Inject
 class ReportsMediatorImpl @Inject constructor() : ReportsMediator {
     override fun startReportsScreen(containerId: Int, fragmentManager: FragmentManager) {
         fragmentManager.beginTransaction()
-            .add(containerId, ReportsFragment.newInstance())
+            .replace(containerId, ReportsFragment.newInstance())
             .commit()
     }
 }

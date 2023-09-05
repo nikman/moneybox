@@ -7,7 +7,7 @@
     tools:context="ru.niku.reports.reports.ReportsFragment">
 
     <TextView
-        android:id="@+id/text_dashboard"
+        android:id="@+id/text_reports"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

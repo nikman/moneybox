@@ -3,9 +3,7 @@ package ru.niku.reports.di
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import ru.niku.reports.reports.ReportsViewModelFactory
-import javax.inject.Provider
 
 @Module
 interface ReportsModule {
@@ -15,7 +13,8 @@ interface ReportsModule {
     fun bindsCache(memoryCache: HabitsMemoryCacheImpl): HabitsMemoryCache*/
 
     @Binds
-    fun bindsReportsViewModelFactory(homeViewModelFactory: ReportsViewModelFactory): ViewModelProvider.Factory
+    fun bindsReportsViewModelFactory(reportsViewModelFactory: ReportsViewModelFactory):
+            ViewModelProvider.Factory
 
     /*companion object{
 
