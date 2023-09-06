@@ -1,3 +1,3 @@
 package ru.niku.coreapi
 
-interface ProvidersFacade : MediatorsProvider, DatabaseProvider, AppProvider
+interface ProvidersFacade : MediatorsProvider, DatabaseProvider, NetworkProvider, AppProvider

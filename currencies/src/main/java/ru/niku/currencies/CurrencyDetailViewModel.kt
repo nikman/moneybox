@@ -1,18 +1,20 @@
 package ru.niku.currencies
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import ru.niku.coreapi.MoneyboxDao
+import ru.niku.coreapi.dto.Currency
 import javax.inject.Inject
 
 class CurrencyDetailViewModel constructor(private val moneyboxDao: MoneyboxDao) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is currencies Fragment"
+    fun saveCurrency(currency: Currency) {
+        viewModelScope.launch {
+            moneyboxDao.updateCurrency(currency)
+        }
     }
-    val text: LiveData<String> = _text
 
 }
 
@@ -22,6 +24,6 @@ class CurrencyDetailViewModelFactory @Inject constructor(
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return CurrencyListViewModel(moneyboxDao) as T
+        return CurrencyDetailViewModel(moneyboxDao) as T
     }
 }
