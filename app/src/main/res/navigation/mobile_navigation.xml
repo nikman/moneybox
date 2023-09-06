@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_reports">
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="ru.niku.moneybox.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        android:name="ru.niku.home.home.HomeFragment"
+        android:label="@string/title_currencies"
+        tools:layout="@layout/fragment_wallet" >
         <action
             android:id="@+id/action_navigation_home_to_navigation_reports"
             app:destination="@id/navigation_reports" />
@@ -20,13 +20,18 @@
 
     <fragment
         android:id="@+id/navigation_reports"
-        android:name="ru.niku.moneybox.ui.dashboard.DashboardFragment"
-        android:label="@string/title_reports"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="ru.niku.reports.reports.ReportsFragment"
+        android:label="@string/title_currencies"
+        tools:layout="@layout/fragment_wallet" >
+        <action
+            android:id="@+id/action_navigation_reports_to_navigation_currencies"
+            app:destination="@id/navigation_currencies" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_currencies"
-        android:name="ru.niku.moneybox.ui.notifications.NotificationsFragment"
+        android:name="ru.niku.currencies.CurrencyListFragment"
         android:label="@string/title_currencies"
-        tools:layout="@layout/fragment_currencies" />
+        tools:layout="@layout/fragment_wallet" />
+
 </navigation>
