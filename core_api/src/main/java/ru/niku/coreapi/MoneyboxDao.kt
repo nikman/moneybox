@@ -12,7 +12,7 @@ import ru.niku.coreapi.dto.Turnovers
 interface MoneyboxDao {
 
     @Query("SELECT * FROM ACCOUNTS")
-    suspend fun getAccounts(): List<Account>
+    suspend fun getAllAccounts(): List<Account>
 
     @Query("SELECT * FROM CURRENCIES")
     suspend fun getAllCurrencies(): List<Currency>

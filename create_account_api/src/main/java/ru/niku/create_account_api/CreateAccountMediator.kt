@@ -1,8 +1,8 @@
 package ru.niku.create_account_api
 
-import android.content.Context
+import androidx.fragment.app.FragmentManager
 
 interface CreateAccountMediator {
 
-    fun openCreateAccountScreen(context: Context)
+    fun openCreateAccountScreen(containerId: Int, fragmentManager: FragmentManager)
 }

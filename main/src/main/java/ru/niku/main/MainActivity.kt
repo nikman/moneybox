@@ -6,6 +6,7 @@ import ru.niku.coreapi.CurrenciesMediator
 import ru.niku.coreapi.HomeMediator
 import ru.niku.coreapi.MoneyboxApp
 import ru.niku.coreapi.ReportsMediator
+import ru.niku.create_account_api.CreateAccountMediator
 import ru.niku.main.databinding.ActivityMainBinding
 import ru.niku.main.di.MainComponent
 import javax.inject.Inject
@@ -20,6 +21,9 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var currenciesMediator: CurrenciesMediator
+
+    @Inject
+    lateinit var createAccountMediator: CreateAccountMediator
 
     private lateinit var binding: ActivityMainBinding
 
@@ -37,6 +41,15 @@ class MainActivity : AppCompatActivity() {
             R.id.mainFragmentsContainer,
             supportFragmentManager
         )
+
+        val fab = binding.fab
+        fab.apply {
+            setOnClickListener {
+                createAccountMediator.openCreateAccountScreen(
+                    R.id.mainFragmentsContainer,
+                    supportFragmentManager)
+            }
+        }
 
         mainNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {

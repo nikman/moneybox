@@ -1,19 +1,28 @@
 package ru.niku.home.home
 
+import android.content.Context
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.map
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import ru.niku.coreapi.MoneyboxDao
+import ru.niku.coreapi.dto.Account
 import ru.niku.coreapi.dto.Currency
+import ru.niku.coreapi.dto.CurrencyModel
 import ru.niku.coreapi.dto.Turnovers
+import ru.niku.create_account_api.CreateAccountMediator
 import javax.inject.Inject
 
-class HomeViewModel constructor(private val moneyboxDao: MoneyboxDao) : ViewModel() {
+class HomeViewModel
+constructor(
+    private val moneyboxDao: MoneyboxDao,
+    private val createAccountMediator: CreateAccountMediator) : ViewModel() {
 
     private val _text = MutableLiveData<String>()
 
@@ -22,14 +31,25 @@ class HomeViewModel constructor(private val moneyboxDao: MoneyboxDao) : ViewMode
     private val viewModelJob = SupervisorJob()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+    private val _allAccounts = MutableLiveData<List<Account>>()
+
+    val allAccounts: LiveData<List<Account>> = _allAccounts
+
     fun getOverallBalance() {
         uiScope.launch {
-            _text.value = //currencyMemoryCache.getCurrency(...).ifEmpty {
-                moneyboxDao.getOverallBalance().toString()
-            //}.also {
-            //    currencyMemoryCache.saveCurrency(...)
-            //}
+            _text.value = moneyboxDao.getOverallBalance().toString()
         }
+    }
+
+    fun getAllAccounts() {
+        uiScope.launch {
+            _allAccounts.value =
+                moneyboxDao.getAllAccounts()
+        }
+    }
+
+    fun openCreateAccountScreen(containerId: Int, fragmentManager: FragmentManager) {
+        createAccountMediator.openCreateAccountScreen(containerId, fragmentManager)
     }
 
     suspend fun addTurnovers() {
@@ -47,10 +67,11 @@ class HomeViewModel constructor(private val moneyboxDao: MoneyboxDao) : ViewMode
 
 @Suppress("UNCHECKED_CAST")
 class HomeViewModelFactory @Inject constructor(
-    private val moneyboxDao: MoneyboxDao
+    private val moneyboxDao: MoneyboxDao,
+    private val createAccountMediator: CreateAccountMediator
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return HomeViewModel(moneyboxDao) as T
+        return HomeViewModel(moneyboxDao, createAccountMediator) as T
     }
 }

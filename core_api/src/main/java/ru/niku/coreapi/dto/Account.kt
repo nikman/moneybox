@@ -13,10 +13,10 @@ data class Account(
     //@ColumnInfo(name = "currency_id", defaultValue = UUID_CURRENCY_RUB)
     //var currency_id: UUID,
     @PrimaryKey(autoGenerate = true) val account_id: Long = 0,
-    val title: String = "",
+    var title: String = "",
     var note: String = "",
     var is_active: Boolean = true,
-    var is_include_into_totals: Boolean = true,
+    var is_included_into_totals: Boolean = true,
     var sort_order: Int = 0,
     val account_external_id: Int = 0
 ) {
