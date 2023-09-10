@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">home</string>
+    <string name="add_account">Add</string>
 </resources>

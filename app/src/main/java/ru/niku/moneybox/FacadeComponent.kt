@@ -21,7 +21,7 @@ interface FacadeComponent : ProvidersFacade {
         DaggerFacadeComponent.builder()
              .appProvider(AppComponent.create(application))
              .databaseProvider(CoreProviders.createDatabaseBuilder(AppComponent.create(application)))
-            .networkProvider(CoreProviders.createNetworkBuilder(AppComponent.create(application)))
+             .networkProvider(CoreProviders.createNetworkBuilder(AppComponent.create(application)))
              .build()
      }
 }

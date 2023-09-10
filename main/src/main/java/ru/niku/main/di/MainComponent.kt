@@ -5,6 +5,7 @@ import ru.niku.coreapi.ProvidersFacade
 import ru.niku.main.MainActivity
 
 @Component(
+    modules = [MainModule::class],
     dependencies = [ProvidersFacade::class]
 )
 interface MainComponent {
