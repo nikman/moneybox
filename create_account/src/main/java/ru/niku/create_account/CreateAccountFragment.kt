@@ -82,7 +82,7 @@ class CreateAccountFragment: Fragment() {
             }
 
         }
-        titleField.addTextChangedListener(noteFieldWatcher)
+        noteField.addTextChangedListener(noteFieldWatcher)
 
         val saveButton = binding.accountSaveButtom
         saveButton.apply {
