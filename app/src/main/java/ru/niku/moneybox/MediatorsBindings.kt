@@ -12,7 +12,7 @@ import ru.niku.currencies.CurrenciesMediatorImpl
 import ru.niku.currencies.navigation.WalletMediatorImpl
 import ru.niku.home.HomeMediatorImpl
 import ru.niku.main.navigation.MainMediatorImpl
-import ru.niku.reports.ReportsMediatorImpl
+import ru.niku.reports.navigation.ReportsMediatorImpl
 
 @Module
 interface MediatorsBindings {

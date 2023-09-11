@@ -12,6 +12,7 @@ class CreateAccountMediatorImpl
     override fun openCreateAccountScreen(containerId: Int, fragmentManager: FragmentManager) {
         fragmentManager.beginTransaction()
             .replace(containerId, CreateAccountFragment.newInstance())
+            .addToBackStack(null)
             .commit()
     }
 }

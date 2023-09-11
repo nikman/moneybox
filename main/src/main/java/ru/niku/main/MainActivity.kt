@@ -43,13 +43,6 @@ class MainActivity : AppCompatActivity() {
         )
 
         val fab = binding.fab
-        fab.apply {
-            setOnClickListener {
-                createAccountMediator.openCreateAccountScreen(
-                    R.id.mainFragmentsContainer,
-                    supportFragmentManager)
-            }
-        }
 
         mainNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -58,6 +51,14 @@ class MainActivity : AppCompatActivity() {
                         R.id.mainFragmentsContainer,
                         supportFragmentManager
                     )
+                    fab.setImageResource(R.drawable.baseline_add_card_24)
+                    fab.apply {
+                        setOnClickListener {
+                            createAccountMediator.openCreateAccountScreen(
+                                R.id.mainFragmentsContainer,
+                                supportFragmentManager)
+                        }
+                    }
                     true
                 }
                 R.id.navigation_reports -> {
@@ -65,6 +66,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.mainFragmentsContainer,
                         supportFragmentManager
                     )
+                    fab.setImageResource(R.drawable.baseline_post_add_24)
                     true
                 }
                 R.id.navigation_currencies -> {
@@ -72,23 +74,19 @@ class MainActivity : AppCompatActivity() {
                         R.id.mainFragmentsContainer,
                         supportFragmentManager
                     )
+                    fab.setImageResource(R.drawable.baseline_playlist_add_24)
                     true
                 }
                 else -> false
             }
         }
-
-        /*val navView: BottomNavigationView = binding.navView
-
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_reports, R.id.navigation_currencies
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)*/
     }
+
+    fun startHomeScreen() {
+        homeMediator.startHomeScreen(
+            R.id.mainFragmentsContainer,
+            supportFragmentManager
+        )
+    }
+
 }

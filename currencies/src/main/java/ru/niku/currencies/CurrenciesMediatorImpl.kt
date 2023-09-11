@@ -8,6 +8,7 @@ class CurrenciesMediatorImpl @Inject constructor() : CurrenciesMediator {
     override fun startCurrenciesScreen(containerId: Int, fragmentManager: FragmentManager) {
         fragmentManager.beginTransaction()
             .replace(containerId, CurrencyListFragment.newInstance())
+            .addToBackStack(null)
             .commit()
     }
 }
