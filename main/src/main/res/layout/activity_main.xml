@@ -34,8 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:contentDescription="Add"
-        android:src="@drawable/ic_home_black_24dp"
+        android:contentDescription="@string/add"
+        android:src="@drawable/baseline_add_card_24"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintRight_toRightOf="parent" />
 

@@ -88,6 +88,7 @@ class CreateAccountFragment: Fragment() {
         saveButton.apply {
             setOnClickListener {
                 saveEntity()
+                activity?.supportFragmentManager?.popBackStack();
             }
         }
 

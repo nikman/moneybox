@@ -10,6 +10,7 @@ class HomeMediatorImpl @Inject constructor() : HomeMediator {
     override fun startHomeScreen(containerId: Int, fragmentManager: FragmentManager) {
         fragmentManager.beginTransaction()
             .replace(containerId, HomeFragment.newInstance())
+            .addToBackStack(null)
             .commit()
     }
 }
