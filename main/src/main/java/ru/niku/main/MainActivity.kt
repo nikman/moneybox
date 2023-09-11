@@ -43,6 +43,13 @@ class MainActivity : AppCompatActivity() {
         )
 
         val fab = binding.fab
+        fab.apply {
+            setOnClickListener {
+                createAccountMediator.openCreateAccountScreen(
+                    R.id.mainFragmentsContainer,
+                    supportFragmentManager)
+            }
+        }
 
         mainNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -52,13 +59,6 @@ class MainActivity : AppCompatActivity() {
                         supportFragmentManager
                     )
                     fab.setImageResource(R.drawable.baseline_add_card_24)
-                    fab.apply {
-                        setOnClickListener {
-                            createAccountMediator.openCreateAccountScreen(
-                                R.id.mainFragmentsContainer,
-                                supportFragmentManager)
-                        }
-                    }
                     true
                 }
                 R.id.navigation_reports -> {
@@ -80,13 +80,6 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-    }
-
-    fun startHomeScreen() {
-        homeMediator.startHomeScreen(
-            R.id.mainFragmentsContainer,
-            supportFragmentManager
-        )
     }
 
 }
