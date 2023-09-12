@@ -1,4 +1,4 @@
-package ru.niku.coreapi
+package ru.niku.coreapi.network
 
 import retrofit2.Response
 import retrofit2.http.GET

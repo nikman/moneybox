@@ -1,4 +1,4 @@
-package ru.niku.coreapi
+package ru.niku.coreapi.network
 
 interface NetworkProvider {
 

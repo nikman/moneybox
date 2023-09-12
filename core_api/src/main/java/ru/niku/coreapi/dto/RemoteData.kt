@@ -1,6 +1,6 @@
 package ru.niku.coreapi.dto
 
-import ru.niku.coreapi.WebApi
+import ru.niku.coreapi.network.WebApi
 import javax.inject.Inject
 
 class MainRemoteData @Inject constructor(private val webApi : WebApi) {

@@ -3,6 +3,6 @@ package ru.niku.coreapi
 import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager
 
-interface ReportsMediator {
+interface ReportsNavigator {
     fun startReportsScreen(@IdRes containerId: Int, fragmentManager: FragmentManager)
 }

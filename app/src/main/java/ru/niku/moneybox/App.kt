@@ -1,8 +1,10 @@
 package ru.niku.moneybox
 
 import android.app.Application
+import ru.niku.core.CoreProviders
 import ru.niku.coreapi.MoneyboxApp
 import ru.niku.coreapi.ProvidersFacade
+import ru.niku.coreapi.network.NetworkProvider
 
 class App: Application(), MoneyboxApp {
 
@@ -20,4 +22,9 @@ class App: Application(), MoneyboxApp {
             facadeComponent = it
         }
     }
+
+    override fun getNetwork(): NetworkProvider {
+        return CoreProviders.createNetworkBuilder()
+    }
+
 }

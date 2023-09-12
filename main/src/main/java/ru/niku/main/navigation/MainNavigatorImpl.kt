@@ -1,10 +1,10 @@
 package ru.niku.main.navigation
 
 import android.content.Context
-import ru.niku.coreapi.MainMediator
+import ru.niku.coreapi.MainNavigator
 import javax.inject.Inject
 
-class MainMediatorImpl @Inject constructor() : MainMediator {
+class MainNavigatorImpl @Inject constructor() : MainNavigator {
 
     override fun openMainScreen(context: Context) {
     }

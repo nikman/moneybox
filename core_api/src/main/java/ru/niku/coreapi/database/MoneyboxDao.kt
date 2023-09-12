@@ -1,4 +1,4 @@
-package ru.niku.coreapi
+package ru.niku.coreapi.database
 
 import androidx.room.Dao
 import androidx.room.Insert

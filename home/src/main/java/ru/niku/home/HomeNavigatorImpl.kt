@@ -1,11 +1,11 @@
 package ru.niku.home
 
 import androidx.fragment.app.FragmentManager
-import ru.niku.coreapi.HomeMediator
+import ru.niku.coreapi.HomeNavigator
 import ru.niku.home.home.HomeFragment
 import javax.inject.Inject
 
-class HomeMediatorImpl @Inject constructor() : HomeMediator {
+class HomeNavigatorImpl @Inject constructor() : HomeNavigator {
 
     override fun startHomeScreen(containerId: Int, fragmentManager: FragmentManager) {
         fragmentManager.beginTransaction()

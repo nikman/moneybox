@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.niku.coreapi.MoneyboxDao
+import ru.niku.coreapi.database.MoneyboxDao
 import ru.niku.coreapi.dto.Account
 import javax.inject.Inject
 

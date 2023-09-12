@@ -2,7 +2,7 @@ package ru.niku.coreapi
 
 import android.content.Context
 
-interface MainMediator  {
+interface MainNavigator  {
 
     fun openMainScreen(context: Context)
 }

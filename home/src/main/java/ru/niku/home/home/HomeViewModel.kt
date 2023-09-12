@@ -1,20 +1,16 @@
 package ru.niku.home.home
 
-import android.content.Context
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.map
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import ru.niku.coreapi.MoneyboxDao
+import ru.niku.coreapi.database.MoneyboxDao
 import ru.niku.coreapi.dto.Account
-import ru.niku.coreapi.dto.Currency
-import ru.niku.coreapi.dto.CurrencyModel
 import ru.niku.coreapi.dto.Turnovers
 import ru.niku.create_account_api.CreateAccountMediator
 import javax.inject.Inject

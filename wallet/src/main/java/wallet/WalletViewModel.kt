@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import ru.niku.coreapi.MoneyboxDao
+import ru.niku.coreapi.database.MoneyboxDao
 import javax.inject.Inject
 
 class WalletViewModel constructor(moneyboxDao: MoneyboxDao): ViewModel() {

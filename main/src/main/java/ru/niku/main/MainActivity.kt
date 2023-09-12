@@ -2,10 +2,10 @@ package ru.niku.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import ru.niku.coreapi.CurrenciesMediator
-import ru.niku.coreapi.HomeMediator
+import ru.niku.coreapi.CurrenciesNavigator
+import ru.niku.coreapi.HomeNavigator
 import ru.niku.coreapi.MoneyboxApp
-import ru.niku.coreapi.ReportsMediator
+import ru.niku.coreapi.ReportsNavigator
 import ru.niku.create_account_api.CreateAccountMediator
 import ru.niku.main.databinding.ActivityMainBinding
 import ru.niku.main.di.MainComponent
@@ -14,13 +14,13 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var homeMediator: HomeMediator
+    lateinit var homeNavigator: HomeNavigator
 
     @Inject
-    lateinit var reportsMediator: ReportsMediator
+    lateinit var reportsNavigator: ReportsNavigator
 
     @Inject
-    lateinit var currenciesMediator: CurrenciesMediator
+    lateinit var currenciesNavigator: CurrenciesNavigator
 
     @Inject
     lateinit var createAccountMediator: CreateAccountMediator
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         val mainNavigationView = binding.navView
 
-        homeMediator.startHomeScreen(
+        homeNavigator.startHomeScreen(
             R.id.mainFragmentsContainer,
             supportFragmentManager
         )
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         mainNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
-                    homeMediator.startHomeScreen(
+                    homeNavigator.startHomeScreen(
                         R.id.mainFragmentsContainer,
                         supportFragmentManager
                     )
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_reports -> {
-                    reportsMediator.startReportsScreen(
+                    reportsNavigator.startReportsScreen(
                         R.id.mainFragmentsContainer,
                         supportFragmentManager
                     )
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_currencies -> {
-                    currenciesMediator.startCurrenciesScreen(
+                    currenciesNavigator.startCurrenciesScreen(
                         R.id.mainFragmentsContainer,
                         supportFragmentManager
                     )

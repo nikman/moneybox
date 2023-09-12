@@ -9,15 +9,16 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import ru.niku.coreapi.MoneyboxDao
-import ru.niku.coreapi.WebApi
+import ru.niku.coreapi.database.MoneyboxDao
+import ru.niku.coreapi.network.WebApi
 import ru.niku.coreapi.dto.Currency
 import ru.niku.coreapi.dto.CurrencyModel
 import javax.inject.Inject
 
 class CurrencyListViewModel constructor(
     private val moneyboxDao: MoneyboxDao,
-    private val webApi: WebApi) : ViewModel() {
+    private val webApi: WebApi
+) : ViewModel() {
 
     private val _allCurrencies = MutableLiveData<List<Currency>>()
 

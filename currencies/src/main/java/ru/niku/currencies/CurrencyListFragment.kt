@@ -38,7 +38,9 @@ class CurrencyListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        CurrenciesComponent.create((requireActivity().application as MoneyboxApp).getFacade())
+        CurrenciesComponent.create(
+            (requireActivity().application as MoneyboxApp).getFacade(),
+            (requireActivity().application as MoneyboxApp).getNetwork())
             .inject(this)
     }
 
