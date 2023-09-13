@@ -6,6 +6,7 @@ import androidx.room.Query
 import androidx.room.Update
 import ru.niku.coreapi.dto.Account
 import ru.niku.coreapi.dto.Currency
+import ru.niku.coreapi.dto.MoneyTransaction
 import ru.niku.coreapi.dto.Turnovers
 
 @Dao
@@ -22,6 +23,9 @@ interface MoneyboxDao {
 
     @Insert
     suspend fun addAccount(account: Account)
+
+    @Insert
+    suspend fun addTransaction(transaction: MoneyTransaction)
 
     @Insert
     suspend fun addCurrency(currency: Currency)
