@@ -8,6 +8,7 @@ import ru.niku.coreapi.HomeNavigator
 import ru.niku.coreapi.MoneyboxApp
 import ru.niku.coreapi.ReportsNavigator
 import ru.niku.create_account_api.CreateAccountMediator
+import ru.niku.create_currency_api.CreateCurrencyMediator
 import ru.niku.main.databinding.ActivityMainBinding
 import ru.niku.main.di.MainComponent
 import ru.niku.money_transaction_api.MoneyTransactionMediator
@@ -29,6 +30,9 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var moneyTransactionMediator: MoneyTransactionMediator
+
+    @Inject
+    lateinit var createCurrencyMediator: CreateCurrencyMediator
 
     private lateinit var binding: ActivityMainBinding
 
@@ -56,6 +60,11 @@ class MainActivity : AppCompatActivity() {
         }
         val openMoneyTransactionScreenListener: (View) -> (Unit) = {
             moneyTransactionMediator.openMoneyTransactionScreen(
+                R.id.mainFragmentsContainer,
+                supportFragmentManager)
+        }
+        val openCreateCurrencyScreenListener: (View) -> (Unit) = {
+            createCurrencyMediator.openCreateCurrencyScreen(
                 R.id.mainFragmentsContainer,
                 supportFragmentManager)
         }
@@ -88,6 +97,7 @@ class MainActivity : AppCompatActivity() {
                         supportFragmentManager
                     )
                     fab.setImageResource(R.drawable.baseline_playlist_add_24)
+                    fab.setOnClickListener(openCreateCurrencyScreenListener)
                     true
                 }
                 else -> false

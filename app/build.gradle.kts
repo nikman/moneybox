@@ -52,6 +52,8 @@ dependencies {
     implementation(project(mapOf("path" to ":home")))
     implementation(project(mapOf("path" to ":create_account")))
     implementation(project(mapOf("path" to ":create_account_api")))
+    implementation(project(mapOf("path" to ":create_currency")))
+    implementation(project(mapOf("path" to ":create_currency_api")))
     implementation(project(mapOf("path" to ":money_transaction")))
     implementation(project(mapOf("path" to ":money_transaction_api")))
     implementation(project(mapOf("path" to ":reports")))

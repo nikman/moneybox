@@ -8,7 +8,7 @@ import androidx.room.TypeConverters
 @TypeConverters(value = [MoneyboxTypeConverter::class])
 data class Currency(
     @PrimaryKey(autoGenerate = true) val currecyId: Long = 0,
-    val name: String = "",
-    val code: String = "",
+    var name: String = "",
+    var code: String = "",
     val rub: Double = 0.0 // value
 )

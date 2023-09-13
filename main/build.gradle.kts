@@ -48,6 +48,7 @@ dependencies {
     implementation(project(mapOf("path" to ":core_api")))
     implementation(project(mapOf("path" to ":create_account_api")))
     implementation(project(mapOf("path" to ":money_transaction_api")))
+    implementation(project(mapOf("path" to ":create_currency_api")))
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
