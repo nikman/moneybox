@@ -13,7 +13,7 @@ interface HomeModule {
 
     /*@Binds
     @Singleton
-    fun bindsCache(memoryCache: HabitsMemoryCacheImpl): HabitsMemoryCache*/
+    fun bindsCache(memoryCache: MemoryCacheImpl): MemoryCache*/
 
     @Binds
     fun bindsHomeViewModelFactory(homeViewModelFactory: HomeViewModelFactory): ViewModelProvider.Factory

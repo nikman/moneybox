@@ -23,7 +23,7 @@ private const val DATABASE_NAME = "MONEYBOX_DB"
 @Module
 class DatabaseModule {
 
-    lateinit var moneyboxDatabase: MoneyboxDatabase
+    /*lateinit var moneyboxDatabase: MoneyboxDatabase
 
     private var rdc: RoomDatabase.Callback = object : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
@@ -55,7 +55,7 @@ class DatabaseModule {
             }
         }
 
-    }
+    }*/
 
     @Provides
     @Reusable
@@ -72,7 +72,16 @@ class DatabaseModule {
             MoneyboxDatabase::class.java,
             DATABASE_NAME)
             .fallbackToDestructiveMigration()
-            .addCallback(rdc)
+            /*.addCallback(
+                object : RoomDatabase.Callback() {
+                    override fun onCreate(db: SupportSQLiteDatabase) {
+                        super.onCreate(db)
+                        val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>()
+                            .setInputData(workDataOf(KEY_FILENAME to PLANT_DATA_FILENAME))
+                            .build()
+                        WorkManager.getInstance(context).enqueue(request)
+                    }
+                })*/
             //.addMigrations(migrationFrom11To12)
             .build()
     }

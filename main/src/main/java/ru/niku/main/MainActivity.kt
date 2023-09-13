@@ -1,6 +1,7 @@
 package ru.niku.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import ru.niku.coreapi.CurrenciesNavigator
 import ru.niku.coreapi.HomeNavigator
@@ -9,6 +10,7 @@ import ru.niku.coreapi.ReportsNavigator
 import ru.niku.create_account_api.CreateAccountMediator
 import ru.niku.main.databinding.ActivityMainBinding
 import ru.niku.main.di.MainComponent
+import ru.niku.money_transaction_api.MoneyTransactionMediator
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +26,9 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var createAccountMediator: CreateAccountMediator
+
+    @Inject
+    lateinit var moneyTransactionMediator: MoneyTransactionMediator
 
     private lateinit var binding: ActivityMainBinding
 
@@ -43,13 +48,19 @@ class MainActivity : AppCompatActivity() {
         )
 
         val fab = binding.fab
-        fab.apply {
-            setOnClickListener {
-                createAccountMediator.openCreateAccountScreen(
-                    R.id.mainFragmentsContainer,
-                    supportFragmentManager)
-            }
+
+        val createAccountListener: (View) -> (Unit) = {
+            createAccountMediator.openCreateAccountScreen(
+                R.id.mainFragmentsContainer,
+                supportFragmentManager)
         }
+        val openMoneyTransactionScreenListener: (View) -> (Unit) = {
+            moneyTransactionMediator.openMoneyTransactionScreen(
+                R.id.mainFragmentsContainer,
+                supportFragmentManager)
+        }
+
+        fab.setOnClickListener(createAccountListener)
 
         mainNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -59,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                         supportFragmentManager
                     )
                     fab.setImageResource(R.drawable.baseline_add_card_24)
+                    fab.setOnClickListener(createAccountListener)
                     true
                 }
                 R.id.navigation_reports -> {
@@ -67,6 +79,7 @@ class MainActivity : AppCompatActivity() {
                         supportFragmentManager
                     )
                     fab.setImageResource(R.drawable.baseline_post_add_24)
+                    fab.setOnClickListener(openMoneyTransactionScreenListener)
                     true
                 }
                 R.id.navigation_currencies -> {

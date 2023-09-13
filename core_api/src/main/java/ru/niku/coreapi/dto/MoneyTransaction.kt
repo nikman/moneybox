@@ -9,6 +9,6 @@ import androidx.room.TypeConverters
 data class MoneyTransaction(
     @PrimaryKey(autoGenerate = true)
     val transaction_id: Long = 0,
-    val account_id: Long,
-    val amount: Double
+    val account_id: Long = 0,
+    val amount: Double = 0.0
 )

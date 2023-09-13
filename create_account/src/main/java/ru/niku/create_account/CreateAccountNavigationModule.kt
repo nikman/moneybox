@@ -7,7 +7,7 @@ import dagger.multibindings.IntoMap
 import ru.niku.create_account_api.CreateAccountMediator
 
 @Module
-interface CreateAccountExternalModule {
+interface CreateAccountNavigationModule {
 
     @Binds
     @IntoMap

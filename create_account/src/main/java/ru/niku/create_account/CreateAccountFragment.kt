@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 class CreateAccountFragment: Fragment() {
 
-    private lateinit var account: Account
+    private val account: Account = Account()
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -34,7 +34,6 @@ class CreateAccountFragment: Fragment() {
         super.onCreate(savedInstanceState)
         CreateAccountComponent.create((requireActivity().application as MoneyboxApp).getFacade())
             .inject(this)
-        account = Account()
     }
 
     override fun onCreateView(
@@ -95,7 +94,7 @@ class CreateAccountFragment: Fragment() {
         return root
     }
 
-    fun saveEntity() {
+    private fun saveEntity() {
         viewModel.addAccount(account = this.account)
     }
 

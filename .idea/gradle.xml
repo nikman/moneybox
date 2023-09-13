@@ -17,6 +17,8 @@
             <option value="$PROJECT_DIR$/core_impl" />
             <option value="$PROJECT_DIR$/create_account" />
             <option value="$PROJECT_DIR$/create_account_api" />
+            <option value="$PROJECT_DIR$/create_currency" />
+            <option value="$PROJECT_DIR$/create_currency_api" />
             <option value="$PROJECT_DIR$/currencies" />
             <option value="$PROJECT_DIR$/home" />
             <option value="$PROJECT_DIR$/main" />
