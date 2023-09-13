@@ -3,38 +3,38 @@ package ru.niku.moneybox
 import dagger.Binds
 import dagger.Module
 import dagger.Reusable
-import ru.niku.coreapi.CurrenciesMediator
-import ru.niku.coreapi.HomeMediator
-import ru.niku.coreapi.MainMediator
-import ru.niku.coreapi.ReportsMediator
-import ru.niku.coreapi.WalletMediator
-import ru.niku.currencies.CurrenciesMediatorImpl
-import ru.niku.currencies.navigation.WalletMediatorImpl
-import ru.niku.home.HomeMediatorImpl
-import ru.niku.main.navigation.MainMediatorImpl
-import ru.niku.reports.navigation.ReportsMediatorImpl
+import ru.niku.coreapi.CurrenciesNavigator
+import ru.niku.coreapi.HomeNavigator
+import ru.niku.coreapi.MainNavigator
+import ru.niku.coreapi.ReportsNavigator
+import ru.niku.coreapi.WalletNavigator
+import ru.niku.currencies.CurrenciesNavigatorImpl
+import ru.niku.currencies.navigation.WalletNavigatorImpl
+import ru.niku.home.HomeNavigatorImpl
+import ru.niku.main.navigation.MainNavigatorImpl
+import ru.niku.reports.navigation.ReportsNavigatorImpl
 
 @Module
 interface MediatorsBindings {
 
     @Binds
     @Reusable
-    fun bindsMainMediator(mainMediatorImpl: MainMediatorImpl): MainMediator
+    fun bindsMainMediator(mainMediatorImpl: MainNavigatorImpl): MainNavigator
 
     @Binds
     @Reusable
-    fun bindsHomeMediator(homeMediatorImpl: HomeMediatorImpl): HomeMediator
+    fun bindsHomeMediator(homeMediatorImpl: HomeNavigatorImpl): HomeNavigator
 
     @Binds
     @Reusable
-    fun bindsReportsMediator(reportsMediatorImpl: ReportsMediatorImpl): ReportsMediator
+    fun bindsReportsMediator(reportsMediatorImpl: ReportsNavigatorImpl): ReportsNavigator
 
     @Binds
     @Reusable
-    fun bindsCurrenciesMediator(currenciesMediatorImpl: CurrenciesMediatorImpl): CurrenciesMediator
+    fun bindsCurrenciesMediator(currenciesMediatorImpl: CurrenciesNavigatorImpl): CurrenciesNavigator
 
     @Binds
     @Reusable
-    fun bindsWalletMediator(walletMediatorImpl: WalletMediatorImpl): WalletMediator
+    fun bindsWalletMediator(walletMediatorImpl: WalletNavigatorImpl): WalletNavigator
 
 }

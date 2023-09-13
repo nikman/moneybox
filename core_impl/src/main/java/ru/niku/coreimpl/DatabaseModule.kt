@@ -11,8 +11,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import ru.niku.coreapi.MoneyboxDao
-import ru.niku.coreapi.MoneyboxDatabaseContract
+import ru.niku.coreapi.database.MoneyboxDao
+import ru.niku.coreapi.database.MoneyboxDatabaseContract
 import ru.niku.coreapi.dto.Account
 import ru.niku.coreapi.dto.Currency
 import java.util.concurrent.Executors

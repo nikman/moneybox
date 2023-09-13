@@ -6,7 +6,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.niku.coreapi.WebApi
+import ru.niku.coreapi.network.WebApi
 import javax.inject.Singleton
 
 @Module

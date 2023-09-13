@@ -2,7 +2,7 @@ package ru.niku.coreimpl
 
 import dagger.Component
 import ru.niku.coreapi.AppProvider
-import ru.niku.coreapi.DatabaseProvider
+import ru.niku.coreapi.database.DatabaseProvider
 import javax.inject.Singleton
 
 @Singleton

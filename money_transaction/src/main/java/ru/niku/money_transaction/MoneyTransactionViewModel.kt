@@ -1,29 +1,29 @@
-package ru.niku.currencies
+package ru.niku.money_transaction
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.niku.coreapi.database.MoneyboxDao
-import ru.niku.coreapi.dto.Currency
+import ru.niku.coreapi.dto.MoneyTransaction
 import javax.inject.Inject
 
-class CurrencyDetailViewModel constructor(private val moneyboxDao: MoneyboxDao) : ViewModel() {
+class MoneyTransactionViewModel constructor(private val moneyboxDao: MoneyboxDao): ViewModel() {
 
-    fun saveCurrency(currency: Currency) {
+    fun addTransaction(transaction: MoneyTransaction) {
         viewModelScope.launch {
-            moneyboxDao.updateCurrency(currency)
+            moneyboxDao.addTransaction(transaction)
         }
     }
 
 }
 
 @Suppress("UNCHECKED_CAST")
-class CurrencyDetailViewModelFactory @Inject constructor(
+class MoneyTransactionViewModelFactory @Inject constructor(
     private val moneyboxDao: MoneyboxDao
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return CurrencyDetailViewModel(moneyboxDao) as T
+        return MoneyTransactionViewModel(moneyboxDao) as T
     }
 }

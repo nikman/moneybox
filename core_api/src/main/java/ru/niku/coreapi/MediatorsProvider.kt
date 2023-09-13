@@ -4,15 +4,15 @@ import javax.inject.Provider
 
 interface MediatorsProvider {
 
-    fun provideMainMediator(): MainMediator
+    fun provideMainMediator(): MainNavigator
 
-    fun provideHomeMediator(): HomeMediator
+    fun provideHomeMediator(): HomeNavigator
 
-    fun provideReportsMediator(): ReportsMediator
+    fun provideReportsMediator(): ReportsNavigator
 
-    fun provideCurrenciesMediator(): CurrenciesMediator
+    fun provideCurrenciesMediator(): CurrenciesNavigator
 
-    fun provideWalletMediator(): WalletMediator
+    fun provideWalletMediator(): WalletNavigator
 
     fun mediatorsMap(): Map<Class<*>, @JvmSuppressWildcards Provider<Any>>
 }

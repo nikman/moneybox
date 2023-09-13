@@ -8,10 +8,7 @@ import ru.niku.coreapi.AppProvider
 import javax.inject.Singleton
 
 @Singleton
-@Component(
-    //modules = [AppModule::class, NetworkModule::class]
-    modules = [AppModule::class]
-)
+@Component
 interface AppComponent : AppProvider {
 
     companion object {
