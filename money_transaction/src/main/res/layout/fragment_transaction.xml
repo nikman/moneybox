@@ -1,25 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.textfield.TextInputEditText
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/transaction_amount"
+        android:baselineAligned="true"
+        android:foregroundGravity="fill_horizontal"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:barrierMargin="4dp"
+        app:checkedButton="@id/button_expence"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:singleSelection="true">
 
-    </com.google.android.material.textfield.TextInputEditText>
+        <Button
+            android:id="@+id/button_income"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Income" />
+
+        <Button
+            android:id="@+id/button_expence"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Expence" />
+
+        <Button
+            android:id="@+id/button_transfer"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transfer"
+            android:visibility="gone"/>
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/account_source"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:drawableStart="@drawable/baseline_account_balance_wallet_24"
+        tools:text="Cache" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:hintTextColor="@color/design_default_color_background"
+        app:layout_constraintTop_toBottomOf="@+id/account_source"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:hint="Category">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_input_layout_category"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:hint="Amount">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:digits="0123456789."
+            android:inputType="numberDecimal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_input_layout_amount"
+        android:drawableStart="@drawable/baseline_date_range_24"
+        tools:text="@tools:sample/date/ddmmyy" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_layout_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        android:hint="Note">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/transaction_save_buttom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save"
+        android:textSize="20sp"
+        android:textColor="@color/design_default_color_primary"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transaction_amount">
-    </com.google.android.material.button.MaterialButton>
+        app:layout_constraintTop_toBottomOf="@+id/text_input_layout_note"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,9 @@ interface MoneyboxDao {
     @Query("SELECT * FROM ACCOUNTS")
     suspend fun getAllAccounts(): List<Account>
 
+    @Query("SELECT * FROM ACCOUNTS WHERE is_active")
+    suspend fun getAllActiveAccounts(): List<Account>
+
     @Query("SELECT * FROM CURRENCIES")
     suspend fun getAllCurrencies(): List<Currency>
 

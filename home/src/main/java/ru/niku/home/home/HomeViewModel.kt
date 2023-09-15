@@ -13,6 +13,7 @@ import ru.niku.coreapi.database.MoneyboxDao
 import ru.niku.coreapi.dto.Account
 import ru.niku.coreapi.dto.Turnovers
 import ru.niku.create_account_api.CreateAccountMediator
+import java.util.Date
 import javax.inject.Inject
 
 class HomeViewModel
@@ -49,13 +50,13 @@ constructor(
     }
 
     suspend fun addTurnovers() {
-        var turnover = Turnovers(0, 1, 1, 250.0)
+        var turnover = Turnovers(0, "0", 1, Date(), 1, 250.0)
         moneyboxDao.addTurnover(turnover)
-        turnover = Turnovers(0, 2, 1, 2500.0)
+        turnover = Turnovers(0,"", 2, Date(),1, 2500.0)
         moneyboxDao.addTurnover(turnover)
-        turnover = Turnovers(0, 3, 1, 2550.0)
+        turnover = Turnovers(0,"", 3, Date(),1, 2550.0)
         moneyboxDao.addTurnover(turnover)
-        turnover = Turnovers(0, 4, 1, 6500.0)
+        turnover = Turnovers(0, "", 4, Date(),1, 6500.0)
         moneyboxDao.addTurnover(turnover)
     }
 
