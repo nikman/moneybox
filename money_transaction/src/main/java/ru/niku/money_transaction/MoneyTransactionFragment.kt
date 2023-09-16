@@ -21,6 +21,7 @@ import ru.niku.money_transaction.databinding.FragmentTransactionBinding
 import ru.niku.money_transaction.di.MoneyTransactionComponent
 import java.text.DateFormat
 import java.util.Calendar
+import java.util.Date
 import java.util.GregorianCalendar
 import java.util.UUID
 import javax.inject.Inject
@@ -29,8 +30,10 @@ class MoneyTransactionFragment: Fragment() {
 
     val uuid = UUID.randomUUID()
 
-    private val transaction: MoneyTransaction = MoneyTransaction(transactionUuid = uuid.toString())
-    private val turnover: Turnovers = Turnovers(transactionUuid = uuid.toString())
+    private val transaction =
+        MoneyTransaction(transactionUuid = uuid.toString(), date = Calendar.getInstance().time)
+    private val turnover =
+        Turnovers(transactionUuid = uuid.toString())
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -169,6 +172,8 @@ class MoneyTransactionFragment: Fragment() {
             }, year, month, day)
             dpd.show()
         }
+        dateButton.text =
+            DateFormat.getDateInstance().format(transaction.date)
 
         val amountWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
