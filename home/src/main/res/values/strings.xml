@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">home</string>
+    <string name="app_name" translatable="false">home</string>
     <string name="add_account">Add</string>
-    <string name="available">Available</string>
+    <string name="available">Available:</string>
 </resources>

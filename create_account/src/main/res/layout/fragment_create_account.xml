@@ -25,12 +25,14 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/account_title"
                 android:layout_width="match_parent"
-                android:layout_height="64dp" />
+                android:layout_height="64dp"
+                android:contentDescription="@string/account_title"/>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/account_note"
                 android:layout_width="match_parent"
-                android:layout_height="64dp" />
+                android:layout_height="64dp"
+                android:contentDescription="@string/account_note"/>
 
         </LinearLayout>
 

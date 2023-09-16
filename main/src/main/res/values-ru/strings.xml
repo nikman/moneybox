@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">main</string>
+    <string name="title_home">Главная</string>
+    <string name="title_reports">Отчеты</string>
+    <string name="add">Добавить</string>
+</resources>
