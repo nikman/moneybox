@@ -7,6 +7,7 @@ import androidx.room.Update
 import ru.niku.coreapi.dto.Account
 import ru.niku.coreapi.dto.Currency
 import ru.niku.coreapi.dto.MoneyTransaction
+import ru.niku.coreapi.dto.MoneyTransactionWithProperties
 import ru.niku.coreapi.dto.Turnovers
 
 @Dao
@@ -23,6 +24,12 @@ interface MoneyboxDao {
 
     @Query("SELECT SUM(amount) FROM TURNOVERS")
     suspend fun getOverallBalance(): Double
+
+    @Query("SELECT SUM(amount) FROM TURNOVERS WHERE accountId=:accountId")
+    suspend fun getAccountBalance(accountId: Long): Double
+
+    @Query("SELECT * FROM TRANSACTIONS ORDER BY date DESC LIMIT 20")
+    suspend fun getTopTransactions(): List<MoneyTransactionWithProperties>
 
     @Insert
     suspend fun addAccount(account: Account)

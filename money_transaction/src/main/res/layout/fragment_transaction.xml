@@ -21,26 +21,27 @@
         app:singleSelection="true">
 
         <Button
-            android:id="@+id/button_income"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Income" />
-
-        <Button
             android:id="@+id/button_expence"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Expence" />
+            android:text="@string/expence" />
+
+        <Button
+            android:id="@+id/button_income"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/income" />
 
         <Button
             android:id="@+id/button_transfer"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Transfer"
+            android:text="@string/transfer"
             android:visibility="gone"/>
+
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -54,32 +55,25 @@
         android:drawableStart="@drawable/baseline_account_balance_wallet_24"
         tools:text="Cache" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout_category"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:hintTextColor="@color/design_default_color_background"
         app:layout_constraintTop_toBottomOf="@+id/account_source"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:hint="Category">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:drawableStart="@drawable/baseline_account_balance_wallet_24"
+        tools:text="Cache" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_input_layout_category"
+        app:layout_constraintTop_toBottomOf="@+id/category"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:hint="Amount">
+        android:hint="@string/amount">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/amount"
@@ -111,7 +105,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/date"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-        android:hint="Note">
+        android:hint="@string/note">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/note"
@@ -125,7 +119,7 @@
         android:id="@+id/transaction_save_buttom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/save"
         android:textSize="20sp"
         android:textColor="@color/design_default_color_primary"
         style="@style/Widget.AppCompat.Button.Borderless"

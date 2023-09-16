@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import ru.niku.coreapi.MoneyboxApp
+import ru.niku.coreapi.TransactionType
 import ru.niku.coreapi.dto.Account
 import ru.niku.coreapi.dto.MoneyTransaction
 import ru.niku.coreapi.dto.Turnovers
@@ -21,7 +22,6 @@ import ru.niku.money_transaction.databinding.FragmentTransactionBinding
 import ru.niku.money_transaction.di.MoneyTransactionComponent
 import java.text.DateFormat
 import java.util.Calendar
-import java.util.Date
 import java.util.GregorianCalendar
 import java.util.UUID
 import javax.inject.Inject
@@ -65,31 +65,37 @@ class MoneyTransactionFragment: Fragment() {
         saveButton.apply {
             setOnClickListener {
                 saveEntity()
-                activity?.supportFragmentManager?.popBackStack();
+                activity?.supportFragmentManager?.popBackStack()
             }
         }
 
         val toggleButtonIncome = binding.buttonIncome
         toggleButtonIncome.apply {
             setOnClickListener {
-                transaction.type = 1
-                turnover.type = 1
+                transaction.multiplier = 1
+                turnover.multiplier = 1
+                transaction.ttype = TransactionType.INCOME
+                turnover.ttype = TransactionType.INCOME
             }
         }
 
         val toggleButtonExpence = binding.buttonExpence
         toggleButtonExpence.apply {
             setOnClickListener {
-                transaction.type = -1
-                turnover.type = -1
+                transaction.multiplier = -1
+                turnover.multiplier = -1
+                transaction.ttype = TransactionType.EXPENCE
+                turnover.ttype = TransactionType.EXPENCE
             }
         }
 
         val toggleButtonTransfer = binding.buttonTransfer
         toggleButtonTransfer.apply {
             setOnClickListener {
-                transaction.type = 0
-                turnover.type = 0
+                transaction.multiplier = 0
+                turnover.multiplier = 0
+                transaction.ttype = TransactionType.TRANSFER
+                turnover.ttype = TransactionType.TRANSFER
             }
         }
 
@@ -102,6 +108,7 @@ class MoneyTransactionFragment: Fragment() {
                 accounts -> accounts?.let { updateAccountSource(accounts) }
         }
         viewModel.getAllActiveAccounts()
+        populateCategories()
     }
 
     private fun updateAccountSource(accounts: List<Account>) {
@@ -147,6 +154,48 @@ class MoneyTransactionFragment: Fragment() {
 
     }
 
+    private fun populateCategories() {
+
+        val categoriesStrings = listOf(
+            "Food",
+            "Phone",
+            "Education",
+            "Children",
+            "Salary"
+        )
+
+        val adapter = ArrayAdapter(
+            requireContext(),
+            R.layout.list_item,
+            categoriesStrings)
+
+        val maxWidth = requireContext().resources.displayMetrics.widthPixels - 20
+
+        val listPopupCategoriesButton = binding.category
+        val listPopupWindowCategories =
+            ListPopupWindow(requireContext(), null, androidx.appcompat.R.attr.listPopupWindowStyle)
+        listPopupWindowCategories.anchorView = listPopupCategoriesButton
+        listPopupWindowCategories.width = maxWidth
+
+        listPopupCategoriesButton.text = categoriesStrings[0]
+        transaction.category = categoriesStrings[0]
+        turnover.category = categoriesStrings[0]
+
+        listPopupWindowCategories.setAdapter(adapter)
+        listPopupWindowCategories.setOnItemClickListener {
+                parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
+            transaction.category = categoriesStrings[position]
+            turnover.category = categoriesStrings[position]
+            listPopupCategoriesButton.text = categoriesStrings[position]
+            listPopupWindowCategories.dismiss()
+        }
+
+        listPopupCategoriesButton.setOnClickListener {
+                v: View? -> listPopupWindowCategories.show()
+        }
+
+    }
+
     private fun saveEntity() {
         viewModel.addTransaction(transaction = this.transaction)
         viewModel.addTurnover(turnover = turnover)
@@ -179,7 +228,7 @@ class MoneyTransactionFragment: Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                transaction.amount = if (count > 0) s.toString().toDouble() * transaction.type else 0.0
+                transaction.amount = if (count > 0) s.toString().toDouble() * transaction.multiplier else 0.0
                 turnover.amount = transaction.amount
                 //transaction.amount_to = 0.0 //-moneyTransaction.amount_from
             }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="expence">Expence</string>
+    <string name="income">Income</string>
+    <string name="transfer">Transfer</string>
+    <string name="category">Category</string>
+    <string name="amount">Amount</string>
+    <string name="note">Note</string>
+    <string name="save">Save</string>
+</resources>

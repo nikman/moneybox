@@ -5,14 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.map
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.niku.coreapi.database.MoneyboxDao
-import ru.niku.coreapi.network.WebApi
 import ru.niku.coreapi.dto.Currency
 import ru.niku.coreapi.dto.CurrencyModel
+import ru.niku.coreapi.network.WebApi
 import javax.inject.Inject
 
 class CurrencyListViewModel constructor(
@@ -32,28 +30,17 @@ class CurrencyListViewModel constructor(
             }
         }
 
-    private val viewModelJob = SupervisorJob()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    /*private val viewModelJob = SupervisorJob()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)*/
 
     fun getAllCurrencies() {
-        uiScope.launch {
+        viewModelScope.launch {
             _allCurrencies.value = //currencyMemoryCache.getCurrency(...).ifEmpty {
                 moneyboxDao.getAllCurrencies()
             //}.also {
             //    currencyMemoryCache.saveCurrency(...)
             //}
         }
-    }
-
-    suspend fun addCurrency() {
-        var currency = Currency(0, "USD", "usd")
-        moneyboxDao.addCurrency(currency)
-        currency = Currency(0, "EUR", "eur")
-        moneyboxDao.addCurrency(currency)
-        currency = Currency(0, "KZT", "kzt")
-        moneyboxDao.addCurrency(currency)
-        currency = Currency(0, "CNY", "cny")
-        moneyboxDao.addCurrency(currency)
     }
 
     suspend fun getCurrencyValue(currencyCode: String) = webApi.getCurrencyValue(currencyCode)

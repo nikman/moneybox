@@ -5,9 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.niku.coreapi.database.MoneyboxDao
 import ru.niku.coreapi.dto.Account
@@ -22,28 +20,33 @@ constructor(
     private val createAccountMediator: CreateAccountMediator) : ViewModel() {
 
     private val _text = MutableLiveData<String>()
-
     val text: LiveData<String> = _text
 
-    private val viewModelJob = SupervisorJob()
-    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    /*private val viewModelJob = SupervisorJob()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)*/
 
     private val _allAccounts = MutableLiveData<List<Account>>()
 
     val allAccounts: LiveData<List<Account>> = _allAccounts
 
     fun getOverallBalance() {
-        uiScope.launch {
+        viewModelScope.launch {
             _text.value = moneyboxDao.getOverallBalance().toString()
         }
     }
 
     fun getAllAccounts() {
-        uiScope.launch {
+        viewModelScope.launch {
             _allAccounts.value =
                 moneyboxDao.getAllAccounts()
         }
     }
+
+    /*fun getAccountBalance(accountId: Long): Double {
+        uiScope.launch {
+            return@launch moneyboxDao.getAccountBalance(accountId)
+        }
+    }*/
 
     fun openCreateAccountScreen(containerId: Int, fragmentManager: FragmentManager) {
         createAccountMediator.openCreateAccountScreen(containerId, fragmentManager)

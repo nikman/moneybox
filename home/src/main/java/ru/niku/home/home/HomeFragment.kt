@@ -21,7 +21,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var accountsRecyclerView: RecyclerView
     private var adapter: AccountsAdapter = AccountsAdapter(emptyList())
-    //private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -65,13 +64,6 @@ class HomeFragment : Fragment() {
         accountsRecyclerView = binding.recyclerView
         accountsRecyclerView.layoutManager = LinearLayoutManager(context)
         accountsRecyclerView.adapter = adapter
-
-        //swipeRefreshLayout = binding.accountsSwipeLayout
-
-        /*swipeRefreshLayout.setOnRefreshListener {
-            swipeRefreshLayout.isRefreshing = false
-            currencyRecyclerView.adapter = adapter
-        }*/
 
         return root
     }

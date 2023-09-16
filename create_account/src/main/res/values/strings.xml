@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">create_account</string>
+    <string name="save" translatable="false">Save</string>
 </resources>

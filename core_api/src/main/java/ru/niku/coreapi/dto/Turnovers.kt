@@ -2,8 +2,8 @@ package ru.niku.coreapi.dto
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import ru.niku.coreapi.TransactionType
 import java.util.Date
-import java.util.UUID
 
 @Entity(tableName = "TURNOVERS")
 data class Turnovers(
@@ -13,5 +13,7 @@ data class Turnovers(
     var date: Date = Date(),
     var accountId: Long = 0,
     var amount: Double = 0.0,
-    var type: Int = -1
+    var multiplier: Int = -1,
+    var ttype: TransactionType = TransactionType.EXPENCE,
+    var category: String = ""
 )
