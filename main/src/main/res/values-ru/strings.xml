@@ -3,5 +3,9 @@
     <string name="app_name">main</string>
     <string name="title_home">Главная</string>
     <string name="title_reports">Отчеты</string>
+    <string name="title_currencies">Валюты</string>
     <string name="add">Добавить</string>
+    <string name="main_screen_title">Главная</string>
+    <string name="reports_screen_title">Отчеты</string>
+    <string name="currencies_screen_title">Валюты</string>
 </resources>

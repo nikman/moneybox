@@ -58,7 +58,7 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
     private var textAmountXNumber: Float = 0F
     private var textAmountXDescription: Float = 0F
     private var textAmountYDescription: Float = 0F
-    private var totalAmount: Int = 0
+    private var totalAmount: Double = 0.0
     private var pieChartColors: List<String> = listOf()
     private var percentageCircleList: List<PieChartModel> = listOf()
     private var textRowList: MutableList<StaticLayout> = mutableListOf()
@@ -214,16 +214,16 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
         var startAt = circleSectionSpace
         percentageCircleList = dataList.mapIndexed { index, payLoad ->
             var percent = payLoad.amount * 100 / totalAmount.toFloat()
-            percent = if (percent < 0F) 0F else percent
+            percent = if (percent < 0F) 0.0 else percent
 
             val resultModel = PieChartModel(
                 percentToStartAt = startAt,
-                percentOfCircle = percent,
-                absPercentOfCircle = startAt + percent,
+                percentOfCircle = percent.toFloat(),
+                absPercentOfCircle = startAt + percent.toFloat(),
                 colorOfLine = Color.parseColor(pieChartColors[index % pieChartColors.size]),
                 valueModel = payLoad
             )
-            if (percent != 0F) startAt += percent + circleSectionSpace
+            if (percent.toFloat() != 0F) startAt += percent.toFloat() + circleSectionSpace
             resultModel
         }
     }
@@ -383,12 +383,12 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
         return legendHeight
     }
 
-    private fun angleBetween2Lines(A1: PointF, A2: PointF, B1: PointF, B2: PointF): Float {
+    /*private fun angleBetween2Lines(A1: PointF, A2: PointF, B1: PointF, B2: PointF): Float {
         val angle1 = atan2((A2.y - A1.y).toDouble(), (A1.x - A2.x).toDouble()).toFloat()
         val angle2 = atan2((B2.y - B1.y).toDouble(), (B1.x - B2.x).toDouble()).toFloat()
         var calculatedAngle = Math.toDegrees((angle1 - angle2).toDouble()).toFloat()
         if (calculatedAngle < 0) calculatedAngle += 360f
         return calculatedAngle
-    }
+    }*/
 
 }

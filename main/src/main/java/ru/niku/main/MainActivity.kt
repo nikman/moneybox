@@ -2,6 +2,7 @@ package ru.niku.main
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import ru.niku.coreapi.CurrenciesNavigator
 import ru.niku.coreapi.HomeNavigator
@@ -52,6 +53,8 @@ class MainActivity : AppCompatActivity() {
         )
 
         val fab = binding.fab
+        val ab: ActionBar? = supportActionBar
+        ab?.title = applicationContext.getString(R.string.main_screen_title)
 
         val createAccountListener: (View) -> (Unit) = {
             createAccountMediator.openCreateAccountScreen(
@@ -78,6 +81,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.mainFragmentsContainer,
                         supportFragmentManager
                     )
+                    ab?.title = applicationContext.getString(R.string.main_screen_title)
                     fab.setImageResource(R.drawable.baseline_add_card_24)
                     fab.setOnClickListener(createAccountListener)
                     true
@@ -87,6 +91,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.mainFragmentsContainer,
                         supportFragmentManager
                     )
+                    ab?.title = applicationContext.getString(R.string.reports_screen_title)
                     fab.setImageResource(R.drawable.baseline_post_add_24)
                     fab.setOnClickListener(openMoneyTransactionScreenListener)
                     true
@@ -96,6 +101,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.mainFragmentsContainer,
                         supportFragmentManager
                     )
+                    ab?.title = applicationContext.getString(R.string.currencies_screen_title)
                     fab.setImageResource(R.drawable.baseline_playlist_add_24)
                     fab.setOnClickListener(openCreateCurrencyScreenListener)
                     true

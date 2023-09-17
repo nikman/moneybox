@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.niku.coreapi.MoneyboxApp
 import ru.niku.coreapi.TransactionType
+import ru.niku.coreapi.dto.ExpencesByCategory
 import ru.niku.coreapi.dto.MoneyTransactionWithProperties
 import ru.niku.reports.R
 import ru.niku.reports.databinding.FragmentReportsBinding
@@ -57,7 +58,7 @@ class ReportsFragment : Fragment() {
         transactionsRecyclerView.layoutManager = LinearLayoutManager(context)
         transactionsRecyclerView.adapter = adapter
 
-        val pieChart = binding.pieChartView
+        /*val pieChart = binding.pieChartView
         pieChart.setValues(
             listOf(
                 PayLoadModel(0, "Perekrestok", 1500, "category1"),
@@ -65,7 +66,7 @@ class ReportsFragment : Fragment() {
                 PayLoadModel(2, "Alfa", 1900, "category3")
             )
         )
-        pieChart.startAnimation()
+        pieChart.startAnimation()*/
 
         return root
     }
@@ -73,17 +74,42 @@ class ReportsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.allTransactions.observe(viewLifecycleOwner) {
+        viewModel.topTransactions.observe(viewLifecycleOwner) {
                 transactions -> transactions?.let { updateUI(transactions) }
         }
 
         viewModel.getTopTransactions()
+
+        viewModel.expencesByCategory.observe(viewLifecycleOwner) {
+                expences -> expences?.let { updateReport(expences) }
+        }
+
+        viewModel.getExpencesByCategory()
     }
 
     private fun updateUI(transactions: List<MoneyTransactionWithProperties>) {
 
         adapter = TransactionsAdapter(transactions)
         transactionsRecyclerView.adapter = adapter
+
+    }
+
+    private fun updateReport(expences: List<ExpencesByCategory>) {
+
+        val pieChart = binding.pieChartView
+
+        val categoryList = expences.map {
+            PayLoadModel(0, "", it.amount, it.category)
+        }
+
+        val expencesList = categoryList.groupingBy { it.category }
+            .reduce { _, acc, element ->
+                PayLoadModel(0, "", acc.amount + element.amount, acc.category)
+            }
+            .values.toList()
+
+        pieChart.setValues(expencesList)
+        pieChart.startAnimation()
 
     }
 
