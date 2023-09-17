@@ -5,7 +5,6 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.Typeface
@@ -18,7 +17,10 @@ import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
-import kotlin.math.atan2
+import androidx.annotation.ColorInt
+import android.R
+import android.content.res.Resources.Theme
+import android.util.TypedValue
 
 class PieChartView(context: Context, attributeSet: AttributeSet):
     View(context, attributeSet) {
@@ -28,8 +30,8 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
         private const val DEFAULT_MARGIN_TEXT_2 = 10
         private const val DEFAULT_MARGIN_TEXT_3 = 2
         private const val DEFAULT_MARGIN_SMALL_CIRCLE = 12
-        private const val TEXT_WIDTH_PERCENT = 0.40
-        private const val CIRCLE_WIDTH_PERCENT = 0.50
+        private const val TEXT_WIDTH_PERCENT = 0.30
+        private const val CIRCLE_WIDTH_PERCENT = 0.60
         private const val DEFAULT_VIEW_SIZE_HEIGHT = 150
         private const val DEFAULT_VIEW_SIZE_WIDTH = 250
     }
@@ -47,7 +49,7 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
     private var circleCenterX: Float = 0F
     private var circleCenterY: Float = 0F
     private var numberTextPaint: TextPaint = TextPaint()
-    private var descriptionTextPain: TextPaint = TextPaint()
+    private var descriptionTextPaint: TextPaint = TextPaint()
     private var amountTextPaint: TextPaint = TextPaint()
     private var textStartX: Float = 0F
     private var textStartY: Float = 0F
@@ -64,23 +66,23 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
     private var textRowList: MutableList<StaticLayout> = mutableListOf()
     private var dataList: List<PayLoadModel> = listOf()
     private var animationSweepAngle: Int = 0
-    //private val touchMargin: Float = 10F    // отступ от окружности при касании,
-                                            // на которой всё еще будет срабатывать тачивент
-
-    /*interface Callbacks {
-        fun onSectorSelected(valueModel: BaseValueModel)
-    }*/
-
-    //private var callbacks: Callbacks? = null
 
     init {
+
+        val typedValue = TypedValue()
+        val theme = context.theme
+        theme.resolveAttribute(R.attr.colorForeground, typedValue, true)
+        @ColorInt val colorForeground = typedValue.data
+        theme.resolveAttribute(R.attr.colorActivatedHighlight, typedValue, true)
+        @ColorInt val colorForegroundInverse = typedValue.data
+
         // Задаем базовые значения и конвертируем в px
-        val textAmountSize: Float = context.spToPixels(10)
-        val textNumberSize: Float = context.spToPixels(5)
+        val textAmountSize: Float = context.spToPixels(5)
+        val textNumberSize: Float = context.spToPixels(14)
         val textDescriptionSize: Float = context.spToPixels(14)
         val textAmountColor: Int = Color.WHITE
-        val textNumberColor: Int = Color.WHITE
-        val textDescriptionColor: Int = Color.GRAY
+        val textNumberColor: Int = colorForeground
+        val textDescriptionColor: Int = colorForegroundInverse // Color.GRAY
 
         val typeArray = context.obtainStyledAttributes(attributeSet, ru.niku.uiatoms.R.styleable.PieChartView)
 
@@ -93,7 +95,7 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
 
         initPains(amountTextPaint, textAmountSize, textAmountColor)
         initPains(numberTextPaint, textNumberSize, textNumberColor)
-        initPains(descriptionTextPain, textDescriptionSize, textDescriptionColor, true)
+        initPains(descriptionTextPaint, textDescriptionSize, textDescriptionColor, true)
 
         typeArray.recycle()
 
@@ -110,6 +112,10 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+
+        /*if (dataList.isEmpty()) {
+            return
+        }*/
 
         textRowList.clear()
 
@@ -137,53 +143,6 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
         val superState = super.onSaveInstanceState()
         return BaseChartState(superState, dataList)
     }
-
-    /*override fun onTouchEvent(event: MotionEvent): Boolean {
-        when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
-                // обработка нажатия пальца на экран
-                val segmentLength = sqrt(
-                    (event.x - this.circleCenterX).toDouble().pow(2.0) +
-                            (event.y - this.circleCenterY).toDouble().pow(2.0)
-                )
-                if (circleRect.contains(event.x, event.y)
-                    && segmentLength <= this.circleRadius + touchMargin) {
-
-                    // прямоугольник (квадрат), в который вписана окружность, содержит координаты клика
-                    // и длина отрезка от центра окружности до точки клика меньше или равна
-                    // радиусу окружности + разрешенный промах touchMargin
-
-                    //Log.d(TAG, "${this.circleRect.contains(event.x, event.y)}")
-                    //Log.d(TAG, "r=$r, circleRadius = ${this.circleRadius}, r<radius=${r<this.circleRadius}")
-                    val angle = angleBetween2Lines(
-                        PointF(circleCenterX, circleCenterY),
-                        PointF(circleCenterX + circleRadius, circleCenterY),
-                        PointF(circleCenterX, circleCenterY),
-                        PointF(event.x, event.y)
-                    )
-                    //Log.d(TAG, "angle = $angle")
-                    val touchedSector =
-                        percentageCircleList.find { a ->
-                            angle in a.percentToStartAt..a.absPercentOfCircle }
-                    /*Log.d(TAG,
-                        "${touchedSector?.percentToStartAt} to ${touchedSector?.absPercentOfCircle}")*/
-                    if (touchedSector != null) {
-                        callbacks?.onSectorSelected(touchedSector.valueModel)
-                    }
-                }
-                return true
-            }
-            MotionEvent.ACTION_MOVE -> {
-                // обработка перемещения пальца по экрану
-                return true
-            }
-            MotionEvent.ACTION_UP -> {
-                // обработка отпускания пальца от экрана
-                return true
-            }
-        }
-        return super.onTouchEvent(event)
-    }*/
 
     override fun onDraw(canvas: Canvas) {
 
@@ -335,7 +294,7 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
         )
 
         textAmountXNumber = circleCenterX -  sizeTextAmountNumber.width() / 2
-        textAmountXDescription = circleCenterX - getWidthOfAmountText(textAmountStr, descriptionTextPain).width() / 2
+        textAmountXDescription = circleCenterX - getWidthOfAmountText(textAmountStr, descriptionTextPaint).width() / 2
         textAmountYDescription = circleCenterY + sizeTextAmountNumber.height() + marginTextThird
     }
 
@@ -364,13 +323,13 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
         var legendHeight = 0
         dataList.forEach {
             val textLayoutNumber = getMultilineText(
-                text = it.amount.toString(),
+                text = it.amount.toInt().toString(),
                 textPaint = numberTextPaint,
                 width = maxWidth
             )
             val textLayoutDescription = getMultilineText(
                 text = it.category,
-                textPaint = descriptionTextPain,
+                textPaint = descriptionTextPaint,
                 width = maxWidth
             )
             textRowList.apply {
@@ -382,13 +341,5 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
 
         return legendHeight
     }
-
-    /*private fun angleBetween2Lines(A1: PointF, A2: PointF, B1: PointF, B2: PointF): Float {
-        val angle1 = atan2((A2.y - A1.y).toDouble(), (A1.x - A2.x).toDouble()).toFloat()
-        val angle2 = atan2((B2.y - B1.y).toDouble(), (B1.x - B2.x).toDouble()).toFloat()
-        var calculatedAngle = Math.toDegrees((angle1 - angle2).toDouble()).toFloat()
-        if (calculatedAngle < 0) calculatedAngle += 360f
-        return calculatedAngle
-    }*/
 
 }

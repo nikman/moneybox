@@ -161,6 +161,7 @@ class MoneyTransactionFragment: Fragment() {
             "Phone",
             "Education",
             "Children",
+            "Taxi",
             "Salary"
         )
 

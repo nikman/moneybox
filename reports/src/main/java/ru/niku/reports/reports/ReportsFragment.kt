@@ -22,6 +22,7 @@ import ru.niku.uikit.PayLoadModel
 import java.text.SimpleDateFormat
 import java.util.Locale
 import javax.inject.Inject
+import kotlin.math.abs
 
 class ReportsFragment : Fragment() {
 
@@ -99,7 +100,7 @@ class ReportsFragment : Fragment() {
         val pieChart = binding.pieChartView
 
         val categoryList = expences.map {
-            PayLoadModel(0, "", it.amount, it.category)
+            PayLoadModel(0, "", abs(it.amount), it.category)
         }
 
         val expencesList = categoryList.groupingBy { it.category }
@@ -109,6 +110,7 @@ class ReportsFragment : Fragment() {
             .values.toList()
 
         pieChart.setValues(expencesList)
+        pieChart.visibility = View.VISIBLE
         pieChart.startAnimation()
 
     }
@@ -146,11 +148,6 @@ class ReportsFragment : Fragment() {
                 TransactionType.INCOME -> amountTextView.setTextColor(Color.GREEN)
                 TransactionType.TRANSFER -> amountTextView.setTextColor(Color.BLUE)
             }
-
-            /*viewLifecycleOwner.lifecycleScope.launch {
-                val b = viewModel.getAccountBalance(account.account_id)
-                balanceTextView.text = b.....toString()
-            }*/
 
         }
     }

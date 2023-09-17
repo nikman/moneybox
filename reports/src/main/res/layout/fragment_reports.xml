@@ -10,7 +10,13 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_report"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="10dp">
         
         <ru.niku.uikit.PieChartView
             android:layout_width="wrap_content"
@@ -18,7 +24,8 @@
             android:id="@+id/pieChartView"
             app:pieChartColors="@array/pieChartColorArray"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone">
 
         </ru.niku.uikit.PieChartView>
 

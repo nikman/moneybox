@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="4dp"
     app:cardElevation="2dp"
-    app:cardBackgroundColor="@color/cardview_shadow_start_color"
+    app:cardBackgroundColor="?attr/colorSurface"
     app:cardUseCompatPadding="true"
     app:contentPadding="10dp">
 
@@ -24,7 +24,8 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/currency_code"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="?attr/textColorAlertDialogListItem"/>
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

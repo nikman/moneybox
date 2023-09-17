@@ -9,7 +9,13 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_common_balance"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="10dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
