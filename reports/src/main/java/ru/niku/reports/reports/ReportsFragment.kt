@@ -1,11 +1,15 @@
 package ru.niku.reports.reports
 
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.ColorInt
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -59,16 +63,6 @@ class ReportsFragment : Fragment() {
         transactionsRecyclerView.layoutManager = LinearLayoutManager(context)
         transactionsRecyclerView.adapter = adapter
 
-        /*val pieChart = binding.pieChartView
-        pieChart.setValues(
-            listOf(
-                PayLoadModel(0, "Perekrestok", 1500, "category1"),
-                PayLoadModel(1, "Lenta", 10500, "category2"),
-                PayLoadModel(2, "Alfa", 1900, "category3")
-            )
-        )
-        pieChart.startAnimation()*/
-
         return root
     }
 
@@ -115,19 +109,29 @@ class ReportsFragment : Fragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private inner class TransactionHolder(view: View):
         RecyclerView.ViewHolder(view), View.OnClickListener {
 
         private lateinit var transaction: MoneyTransactionWithProperties
-        fun getItem() = transaction
 
         private val accountTextView: TextView = itemView.findViewById(R.id.account)
         private val dateTextView: TextView = itemView.findViewById(R.id.date)
         private val categoryTextView: TextView = itemView.findViewById(R.id.category)
         private val amountTextView: TextView = itemView.findViewById(R.id.amount)
+        @ColorInt
+        private var colorAccent = 0
+        @ColorInt
+        private var colorError = 0
 
         init {
             itemView.setOnClickListener(this)
+
+            val typedValue = TypedValue()
+            context?.theme?.resolveAttribute(android.R.attr.colorAccent, typedValue, true)
+            colorAccent = typedValue.data
+            context?.theme?.resolveAttribute(android.R.attr.colorError, typedValue, true)
+            colorError = typedValue.data
         }
 
         override fun onClick(v: View?) {
@@ -144,8 +148,8 @@ class ReportsFragment : Fragment() {
             categoryTextView.text = this.transaction.transaction.category
 
             when (this.transaction.transaction.ttype) {
-                TransactionType.EXPENCE -> amountTextView.setTextColor(Color.RED)
-                TransactionType.INCOME -> amountTextView.setTextColor(Color.GREEN)
+                TransactionType.EXPENCE -> amountTextView.setTextColor(colorError)
+                TransactionType.INCOME -> amountTextView.setTextColor(colorAccent)
                 TransactionType.TRANSFER -> amountTextView.setTextColor(Color.BLUE)
             }
 
@@ -155,6 +159,7 @@ class ReportsFragment : Fragment() {
     private inner class TransactionsAdapter(var transactions: List<MoneyTransactionWithProperties>):
         RecyclerView.Adapter<TransactionHolder>() {
 
+        @RequiresApi(Build.VERSION_CODES.O)
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionHolder {
             val itemView =
                 LayoutInflater.from(parent.context)
@@ -167,6 +172,7 @@ class ReportsFragment : Fragment() {
             return transactions.size
         }
 
+        @RequiresApi(Build.VERSION_CODES.O)
         override fun onBindViewHolder(holder: TransactionHolder, position: Int) {
             holder.bind(transactions[position])
         }

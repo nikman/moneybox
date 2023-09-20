@@ -19,7 +19,8 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/currency_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/currency_code"

@@ -73,7 +73,7 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
         val theme = context.theme
         theme.resolveAttribute(R.attr.colorForeground, typedValue, true)
         @ColorInt val colorForeground = typedValue.data
-        theme.resolveAttribute(R.attr.colorActivatedHighlight, typedValue, true)
+        theme.resolveAttribute(R.attr.colorForeground, typedValue, true)
         @ColorInt val colorForegroundInverse = typedValue.data
 
         // Задаем базовые значения и конвертируем в px

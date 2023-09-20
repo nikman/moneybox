@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import ru.niku.coreapi.CurrenciesNavigator
 import ru.niku.coreapi.HomeNavigator
 import ru.niku.coreapi.MoneyboxApp
-import ru.niku.coreapi.ReportsNavigator
+import ru.niku.reports_api.ReportsNavigator
 import ru.niku.create_account_api.CreateAccountMediator
 import ru.niku.create_currency_api.CreateCurrencyMediator
 import ru.niku.main.databinding.ActivityMainBinding

@@ -1,4 +1,4 @@
-package ru.niku.coreapi
+package ru.niku.reports_api
 
 import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager

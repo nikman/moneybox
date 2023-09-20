@@ -61,6 +61,7 @@ dependencies {
     implementation(project(mapOf("path" to ":currencies")))
     implementation(project(mapOf("path" to ":network_api")))
     implementation(project(mapOf("path" to ":network_impl")))
+    implementation(project(mapOf("path" to ":reports_api")))
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

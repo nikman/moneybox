@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         app:cardCornerRadius="4dp"
-        app:cardElevation="2dp"
-        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="?attr/colorBackgroundFloating"
         app:cardUseCompatPadding="true"
         app:contentPadding="10dp">
         

@@ -8,8 +8,6 @@ interface MediatorsProvider {
 
     fun provideHomeMediator(): HomeNavigator
 
-    fun provideReportsMediator(): ReportsNavigator
-
     fun provideCurrenciesMediator(): CurrenciesNavigator
 
     fun provideWalletMediator(): WalletNavigator

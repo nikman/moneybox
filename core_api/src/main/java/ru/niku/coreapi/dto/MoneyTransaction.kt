@@ -29,4 +29,13 @@ data class MoneyTransaction(
     var amount: Double = 0.0,
     var note: String = "",
     var category: String = ""
-)
+) {
+    companion object {
+        fun getAmount(amount: Double, ttype: TransactionType): Double {
+            return if (ttype == TransactionType.EXPENCE) -1 * amount else amount
+        }
+        fun getMultiplier(ttype: TransactionType): Int {
+            return if (ttype == TransactionType.EXPENCE) -1 else 1
+        }
+    }
+}

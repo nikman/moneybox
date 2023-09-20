@@ -28,7 +28,7 @@ import javax.inject.Inject
 
 class MoneyTransactionFragment: Fragment() {
 
-    val uuid = UUID.randomUUID()
+    private val uuid = UUID.randomUUID()
 
     private val transaction =
         MoneyTransaction(transactionUuid = uuid.toString(), date = Calendar.getInstance().time)
@@ -72,32 +72,35 @@ class MoneyTransactionFragment: Fragment() {
         val toggleButtonIncome = binding.buttonIncome
         toggleButtonIncome.apply {
             setOnClickListener {
-                transaction.multiplier = 1
-                turnover.multiplier = 1
-                transaction.ttype = TransactionType.INCOME
-                turnover.ttype = TransactionType.INCOME
+                val ttype = TransactionType.INCOME
+                transaction.multiplier = MoneyTransaction.getMultiplier(ttype)
+                turnover.multiplier = MoneyTransaction.getMultiplier(ttype)
+                transaction.ttype = ttype
+                turnover.ttype = ttype
             }
         }
 
         val toggleButtonExpence = binding.buttonExpence
         toggleButtonExpence.apply {
             setOnClickListener {
-                transaction.multiplier = -1
-                turnover.multiplier = -1
-                transaction.ttype = TransactionType.EXPENCE
-                turnover.ttype = TransactionType.EXPENCE
+                val ttype = TransactionType.EXPENCE
+                transaction.multiplier = MoneyTransaction.getMultiplier(ttype)
+                turnover.multiplier = MoneyTransaction.getMultiplier(ttype)
+                transaction.ttype = ttype
+                turnover.ttype = ttype
             }
         }
 
-        val toggleButtonTransfer = binding.buttonTransfer
+        /*val toggleButtonTransfer = binding.buttonTransfer
         toggleButtonTransfer.apply {
             setOnClickListener {
+                val ttype = TransactionType.TRANSFER
                 transaction.multiplier = 0
                 turnover.multiplier = 0
-                transaction.ttype = TransactionType.TRANSFER
-                turnover.ttype = TransactionType.TRANSFER
+                transaction.ttype = ttype
+                turnover.ttype = ttype
             }
-        }
+        }*/
 
         return root
 
@@ -229,9 +232,9 @@ class MoneyTransactionFragment: Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                transaction.amount = if (count > 0) s.toString().toDouble() * transaction.multiplier else 0.0
+                //transaction.amount = if (count > 0) s.toString().toDouble() * transaction.multiplier else 0.0
+                transaction.amount = if (count > 0) MoneyTransaction.getAmount(s.toString().toDouble(), transaction.ttype) else 0.0
                 turnover.amount = transaction.amount
-                //transaction.amount_to = 0.0 //-moneyTransaction.amount_from
             }
 
             override fun afterTextChanged(s: Editable?) {  }
