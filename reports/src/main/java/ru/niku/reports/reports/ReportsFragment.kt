@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.niku.coreapi.MoneyboxApp
@@ -59,9 +60,17 @@ class ReportsFragment : Fragment() {
         _binding = FragmentReportsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val layoutManager = LinearLayoutManager(context)
         transactionsRecyclerView = binding.recyclerView
-        transactionsRecyclerView.layoutManager = LinearLayoutManager(context)
+        transactionsRecyclerView.layoutManager = layoutManager
         transactionsRecyclerView.adapter = adapter
+
+        /*transactionsRecyclerView.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                layoutManager.orientation
+            )
+        )*/
 
         return root
     }

@@ -4,6 +4,7 @@
     <declare-styleable name="PieChartView">
         <attr name="pieChartColors" format="reference"/>
         <attr name="pieChartTextAmount" format="string"/>
+        <attr name="pieChartAmountTextStyle" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="BarChartView">

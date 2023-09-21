@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="4dp"
-    app:cardElevation="2dp"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="0dp"
     app:cardBackgroundColor="?attr/colorSurface"
     app:cardUseCompatPadding="true"
-    app:contentPadding="10dp">
+    app:contentPadding="10dp"
+    android:layout_marginStart="3dp"
+    android:layout_marginEnd="3dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,13 +22,15 @@
             android:id="@+id/currency_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            style="@style/TextAppearance.MaterialComponents.Subtitle2"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/currency_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="?attr/textColorAlertDialogListItem"/>
+            android:textColor="?attr/textColorAlertDialogListItem"
+            style="@style/TextAppearance.MaterialComponents.Body2"/>
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

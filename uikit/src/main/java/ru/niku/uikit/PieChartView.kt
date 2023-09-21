@@ -1,5 +1,6 @@
 package ru.niku.uikit
 
+import android.R
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
@@ -15,12 +16,10 @@ import android.text.TextDirectionHeuristic
 import android.text.TextDirectionHeuristics
 import android.text.TextPaint
 import android.util.AttributeSet
-import android.view.View
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
-import androidx.annotation.ColorInt
-import android.R
-import android.content.res.Resources.Theme
 import android.util.TypedValue
+import android.view.View
+import androidx.annotation.ColorInt
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 
 class PieChartView(context: Context, attributeSet: AttributeSet):
     View(context, attributeSet) {
@@ -75,6 +74,8 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
         @ColorInt val colorForeground = typedValue.data
         theme.resolveAttribute(R.attr.colorForeground, typedValue, true)
         @ColorInt val colorForegroundInverse = typedValue.data
+        //theme.resolveAttribute(R.style.TextAppearance, typedValue, true)
+        //@StyleRes val styleTextAppearance = typedValue.data
 
         // Задаем базовые значения и конвертируем в px
         val textAmountSize: Float = context.spToPixels(5)
@@ -84,7 +85,10 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
         val textNumberColor: Int = colorForeground
         val textDescriptionColor: Int = colorForegroundInverse // Color.GRAY
 
-        val typeArray = context.obtainStyledAttributes(attributeSet, ru.niku.uiatoms.R.styleable.PieChartView)
+        val typeArray = context.obtainStyledAttributes(
+            attributeSet,
+            ru.niku.uiatoms.R.styleable.PieChartView
+        )
 
         // Секция списка цветов
         val colorResId =
@@ -92,6 +96,8 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
         pieChartColors = typeArray.resources.getStringArray(colorResId).toList()
 
         circlePadding += circleStrokeWidth
+
+        //val pStyle = Paint.
 
         initPains(amountTextPaint, textAmountSize, textAmountColor)
         initPains(numberTextPaint, textNumberSize, textNumberColor)
@@ -157,6 +163,7 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
         textPaint.color = textColor
         textPaint.textSize = textSize
         textPaint.isAntiAlias = true
+        //textPaint.style = textStyle
 
         if (!isDescription) textPaint.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
     }

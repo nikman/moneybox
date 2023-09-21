@@ -27,7 +27,6 @@ class MoneyTransactionViewModel constructor(private val moneyboxDao: MoneyboxDao
     }
 
     private val _allActiveAccounts = MutableLiveData<List<Account>>()
-
     val allActiveAccounts: LiveData<List<Account>> = _allActiveAccounts
 
     fun getAllActiveAccounts() {
