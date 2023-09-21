@@ -16,7 +16,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
         android:layout_weight="1"
-        android:background="#18272d"/>
+        android:background="?attr/colorSurfaceVariant"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
