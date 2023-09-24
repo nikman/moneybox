@@ -56,5 +56,6 @@ dependencies {
     implementation(project(mapOf("path" to ":money_transaction_api")))
     implementation(project(mapOf("path" to ":create_currency_api")))
     implementation(project(mapOf("path" to ":reports_api")))
+    api(project(mapOf("path" to ":uiatoms")))
 
 }

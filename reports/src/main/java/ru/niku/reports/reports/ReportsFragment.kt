@@ -113,6 +113,7 @@ class ReportsFragment : Fragment() {
             .values.toList()
 
         pieChart.setValues(expencesList)
+        pieChart.requestLayout()
         pieChart.visibility = View.VISIBLE
         pieChart.startAnimation()
 

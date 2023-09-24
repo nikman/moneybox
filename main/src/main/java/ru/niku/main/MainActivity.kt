@@ -60,16 +60,19 @@ class MainActivity : AppCompatActivity() {
             createAccountMediator.openCreateAccountScreen(
                 R.id.mainFragmentsContainer,
                 supportFragmentManager)
+            //fab.visibility = View.GONE
         }
         val openMoneyTransactionScreenListener: (View) -> (Unit) = {
             moneyTransactionMediator.openMoneyTransactionScreen(
                 R.id.mainFragmentsContainer,
                 supportFragmentManager)
+            //fab.visibility = View.GONE
         }
         val openCreateCurrencyScreenListener: (View) -> (Unit) = {
             createCurrencyMediator.openCreateCurrencyScreen(
                 R.id.mainFragmentsContainer,
                 supportFragmentManager)
+            //fab.visibility = View.GONE
         }
 
         fab.setOnClickListener(createAccountListener)
@@ -111,4 +114,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }

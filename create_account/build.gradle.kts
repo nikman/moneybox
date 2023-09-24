@@ -56,5 +56,6 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     implementation(project(mapOf("path" to ":create_account_api")))
+    api(project(mapOf("path" to ":uiatoms")))
 
 }

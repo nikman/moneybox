@@ -7,6 +7,10 @@
         <item name="cardUseCompatPadding">true</item>
         <item name="contentPadding">10dp</item>
     </style>
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">4dp</item>
+    </style>
     <dimen name="cardLayoutMargin">4dp</dimen>
     <dimen name="paddingTop">1dp</dimen>
     <dimen name="paddingBottom">1dp</dimen>

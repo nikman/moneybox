@@ -97,8 +97,6 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
 
         circlePadding += circleStrokeWidth
 
-        //val pStyle = Paint.
-
         initPains(amountTextPaint, textAmountSize, textAmountColor)
         initPains(numberTextPaint, textNumberSize, textNumberColor)
         initPains(descriptionTextPaint, textDescriptionSize, textDescriptionColor, true)
@@ -118,10 +116,6 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-
-        /*if (dataList.isEmpty()) {
-            return
-        }*/
 
         textRowList.clear()
 

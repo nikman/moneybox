@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_currency_title">Заголовок</string>
+    <string name="create_currency_code">Код</string>
+    <string name="button_save_title">Сохранить</string>
+</resources>

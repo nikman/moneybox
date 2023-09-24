@@ -12,4 +12,7 @@
         <item>#263238</item>
         <item>#01579B</item>
     </string-array>
+    <string name="create_currency_title">Currency title</string>
+    <string name="create_currency_code">Currency code</string>
+    <string name="button_save_title">Save</string>
 </resources>
