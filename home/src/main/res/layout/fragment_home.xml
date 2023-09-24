@@ -8,14 +8,10 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_common_balance"
+        style="@style/CardView.Moneybox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="2dp"
-        app:cardBackgroundColor="?attr/colorBackgroundFloating"
-        app:cardUseCompatPadding="true"
-        app:contentPadding="10dp">
+        android:layout_margin="@dimen/cardLayoutMargin">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -69,7 +65,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/paddingTop"
+        android:paddingBottom="@dimen/paddingBottom">
 
     </androidx.recyclerview.widget.RecyclerView>
 

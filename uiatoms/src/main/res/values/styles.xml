@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <style name="CardView.Moneybox" parent="CardView">
+        <item name="cardCornerRadius">4dp</item>
+        <item name="cardElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardBackgroundColor">?attr/colorBackgroundFloating</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="contentPadding">10dp</item>
+    </style>
+    <dimen name="cardLayoutMargin">4dp</dimen>
+    <dimen name="paddingTop">1dp</dimen>
+    <dimen name="paddingBottom">1dp</dimen>
 </resources>

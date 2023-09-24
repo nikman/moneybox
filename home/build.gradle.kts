@@ -53,6 +53,7 @@ dependencies {
     kapt(libs.dagger.compiler.kapt)
 
     api(project(mapOf("path" to ":core")))
-    implementation(project(mapOf("path" to ":create_account_api")))
+    api(project(mapOf("path" to ":uiatoms")))
+    api(project(mapOf("path" to ":create_account_api")))
 
 }
