@@ -160,12 +160,12 @@ class MoneyTransactionFragment: Fragment() {
     private fun populateCategories() {
 
         val categoriesStrings = listOf(
-            "Food",
-            "Phone",
-            "Education",
-            "Children",
-            "Taxi",
-            "Salary"
+            "Продукты",
+            "Мобильный",
+            "Образование",
+            "Дети",
+            "Такси",
+            "Зарплата"
         )
 
         val adapter = ArrayAdapter(
@@ -232,7 +232,6 @@ class MoneyTransactionFragment: Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                //transaction.amount = if (count > 0) s.toString().toDouble() * transaction.multiplier else 0.0
                 transaction.amount = if (count > 0) MoneyTransaction.getAmount(s.toString().toDouble(), transaction.ttype) else 0.0
                 turnover.amount = transaction.amount
             }
