@@ -1,21 +1,39 @@
 package ru.niku.money_transaction
 
+import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import androidx.appcompat.widget.ListPopupWindow
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import ru.niku.coreapi.MoneyboxApp
+import ru.niku.coreapi.TransactionType
+import ru.niku.coreapi.dto.Account
 import ru.niku.coreapi.dto.MoneyTransaction
+import ru.niku.coreapi.dto.Turnovers
 import ru.niku.money_transaction.databinding.FragmentTransactionBinding
 import ru.niku.money_transaction.di.MoneyTransactionComponent
+import java.text.DateFormat
+import java.util.Calendar
+import java.util.GregorianCalendar
+import java.util.UUID
 import javax.inject.Inject
 
 class MoneyTransactionFragment: Fragment() {
 
-    private val transaction: MoneyTransaction = MoneyTransaction()
+    private val uuid = UUID.randomUUID()
+
+    private val transaction =
+        MoneyTransaction(transactionUuid = uuid.toString(), date = Calendar.getInstance().time)
+    private val turnover =
+        Turnovers(transactionUuid = uuid.toString())
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -47,16 +65,200 @@ class MoneyTransactionFragment: Fragment() {
         saveButton.apply {
             setOnClickListener {
                 saveEntity()
-                activity?.supportFragmentManager?.popBackStack();
+                activity?.supportFragmentManager?.popBackStack()
             }
         }
+
+        val toggleButtonIncome = binding.buttonIncome
+        toggleButtonIncome.apply {
+            setOnClickListener {
+                val ttype = TransactionType.INCOME
+                transaction.multiplier = MoneyTransaction.getMultiplier(ttype)
+                turnover.multiplier = MoneyTransaction.getMultiplier(ttype)
+                transaction.ttype = ttype
+                turnover.ttype = ttype
+            }
+        }
+
+        val toggleButtonExpence = binding.buttonExpence
+        toggleButtonExpence.apply {
+            setOnClickListener {
+                val ttype = TransactionType.EXPENCE
+                transaction.multiplier = MoneyTransaction.getMultiplier(ttype)
+                turnover.multiplier = MoneyTransaction.getMultiplier(ttype)
+                transaction.ttype = ttype
+                turnover.ttype = ttype
+            }
+        }
+
+        /*val toggleButtonTransfer = binding.buttonTransfer
+        toggleButtonTransfer.apply {
+            setOnClickListener {
+                val ttype = TransactionType.TRANSFER
+                transaction.multiplier = 0
+                turnover.multiplier = 0
+                transaction.ttype = ttype
+                turnover.ttype = ttype
+            }
+        }*/
 
         return root
 
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.allActiveAccounts.observe(viewLifecycleOwner) {
+                accounts -> accounts?.let { updateAccountSource(accounts) }
+        }
+        viewModel.getAllActiveAccounts()
+        populateCategories()
+    }
+
+    private fun updateAccountSource(accounts: List<Account>) {
+
+        if (accounts.isEmpty()) {
+            return
+        }
+
+        val accountsStrings =
+            List(accounts.size) {
+                    i -> accounts[i].toString()
+            }
+
+        val adapter = ArrayAdapter(
+            requireContext(),
+            R.layout.list_item,
+            accountsStrings)
+
+        val maxWidth = requireContext().resources.displayMetrics.widthPixels - 20
+
+        val listPopupAccountSourceButton = binding.accountSource
+        val listPopupWindowAccountSource =
+            ListPopupWindow(requireContext(), null, androidx.appcompat.R.attr.listPopupWindowStyle)
+        listPopupWindowAccountSource.anchorView = listPopupAccountSourceButton
+        listPopupWindowAccountSource.width = maxWidth
+
+        listPopupAccountSourceButton.text = accounts[0].toString()
+        transaction.account_id = accounts[0].account_id
+        turnover.accountId = accounts[0].account_id
+
+        listPopupWindowAccountSource.setAdapter(adapter)
+        listPopupWindowAccountSource.setOnItemClickListener {
+                parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
+            transaction.account_id = accounts[position].account_id
+            turnover.accountId = accounts[position].account_id
+            listPopupAccountSourceButton.text = accounts[position].toString()
+            listPopupWindowAccountSource.dismiss()
+        }
+
+        listPopupAccountSourceButton.setOnClickListener {
+                v: View? -> listPopupWindowAccountSource.show()
+        }
+
+    }
+
+    private fun populateCategories() {
+
+        val categoriesStrings = listOf(
+            "Продукты",
+            "Мобильный",
+            "Образование",
+            "Дети",
+            "Такси",
+            "Зарплата"
+        )
+
+        val adapter = ArrayAdapter(
+            requireContext(),
+            R.layout.list_item,
+            categoriesStrings)
+
+        val maxWidth = requireContext().resources.displayMetrics.widthPixels - 20
+
+        val listPopupCategoriesButton = binding.category
+        val listPopupWindowCategories =
+            ListPopupWindow(requireContext(), null, androidx.appcompat.R.attr.listPopupWindowStyle)
+        listPopupWindowCategories.anchorView = listPopupCategoriesButton
+        listPopupWindowCategories.width = maxWidth
+
+        listPopupCategoriesButton.text = categoriesStrings[0]
+        transaction.category = categoriesStrings[0]
+        turnover.category = categoriesStrings[0]
+
+        listPopupWindowCategories.setAdapter(adapter)
+        listPopupWindowCategories.setOnItemClickListener {
+                parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
+            transaction.category = categoriesStrings[position]
+            turnover.category = categoriesStrings[position]
+            listPopupCategoriesButton.text = categoriesStrings[position]
+            listPopupWindowCategories.dismiss()
+        }
+
+        listPopupCategoriesButton.setOnClickListener {
+                v: View? -> listPopupWindowCategories.show()
+        }
+
+    }
+
     private fun saveEntity() {
         viewModel.addTransaction(transaction = this.transaction)
+        viewModel.addTurnover(turnover = turnover)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        val dateButton = binding.date
+        dateButton.setOnClickListener {
+
+            val dpd = DatePickerDialog(requireContext(), {
+                    _, year, monthOfYear, dayOfMonth ->
+                val selectedDate = GregorianCalendar(year, monthOfYear, dayOfMonth).time
+                dateButton.text =
+                    DateFormat.getDateInstance().format(selectedDate)
+                transaction.date = selectedDate
+                turnover.date = selectedDate
+            }, year, month, day)
+            dpd.show()
+        }
+        dateButton.text =
+            DateFormat.getDateInstance().format(transaction.date)
+
+        val amountWatcher = object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                transaction.amount = if (count > 0) MoneyTransaction.getAmount(s.toString().toDouble(), transaction.ttype) else 0.0
+                turnover.amount = transaction.amount
+            }
+
+            override fun afterTextChanged(s: Editable?) {  }
+        }
+        val amountField = binding.amount
+        amountField.addTextChangedListener(amountWatcher)
+
+        val noteField = binding.note
+        val noteFieldWatcher = object : TextWatcher {
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val changedText = s.toString()
+                transaction.note = changedText
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        }
+        noteField.addTextChangedListener(noteFieldWatcher)
     }
 
     override fun onDestroyView() {

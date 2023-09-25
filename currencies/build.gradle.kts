@@ -39,25 +39,26 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    api(project(mapOf("path" to ":core")))
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.test.espresso.core)
 
-    implementation("androidx.fragment:fragment-ktx:1.6.1")
+    implementation(libs.androidx.fragment.ktx)
 
-    implementation("com.google.dagger:dagger:2.47")
-    kapt("com.google.dagger:dagger-compiler:2.47")
-
-    //implementation("androidx.lifecycle:lifecycle-livedata:2.0.0")
-    //implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler.kapt)
 
     //retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.converter.gson)
+
+    implementation(libs.swiperefreshlayout)
+
+    // project modules
+    api(project(mapOf("path" to ":core_api")))
+    api(project(mapOf("path" to ":uiatoms")))
 
 }

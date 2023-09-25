@@ -1,4 +1,4 @@
-package ru.niku.money_transaction
+package ru.niku.reports_api
 
 import org.junit.Test
 

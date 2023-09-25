@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_common_balance"
+        style="@style/CardView.Moneybox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/cardLayoutMargin">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -18,8 +21,9 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Всего доступно:"
-                android:padding="10dp">
+                android:text="@string/available"
+                android:padding="10dp"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1">
 
             </com.google.android.material.textview.MaterialTextView>
 
@@ -45,9 +49,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="4dp"
-                    android:text="text in card view"
+                    tools:text="text in card view"
                     android:textSize="55sp"
-                    android:textStyle="bold">
+                    android:textStyle="bold"
+                    style="@style/TextAppearance.MaterialComponents.Headline4">
 
                 </com.google.android.material.textview.MaterialTextView>
 
@@ -60,10 +65,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/paddingTop"
+        android:paddingBottom="@dimen/paddingBottom">
 
     </androidx.recyclerview.widget.RecyclerView>
-
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

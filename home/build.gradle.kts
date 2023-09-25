@@ -39,18 +39,21 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.androidx.fragment.ktx)
+
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler.kapt)
+
     api(project(mapOf("path" to ":core")))
-    implementation(project(mapOf("path" to ":create_account_api")))
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    implementation("androidx.fragment:fragment-ktx:1.6.1")
-
-    implementation("com.google.dagger:dagger:2.47")
-    kapt("com.google.dagger:dagger-compiler:2.47")
+    api(project(mapOf("path" to ":uiatoms")))
+    api(project(mapOf("path" to ":create_account_api")))
 
 }

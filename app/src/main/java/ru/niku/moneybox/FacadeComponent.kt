@@ -8,10 +8,18 @@ import ru.niku.coreapi.ProvidersFacade
 import ru.niku.coreapi.database.DatabaseProvider
 import ru.niku.create_account.CreateAccountNavigationModule
 import ru.niku.money_transaction.MoneyTransactionNavigationModule
+import ru.niku.create_currency.CreateCurrencyNavigationModule
+import ru.niku.reports.di.ReportsNavigationModule
 
 @Component(
     dependencies = [AppProvider::class, DatabaseProvider::class],
-    modules = [MediatorsBindings::class, CreateAccountNavigationModule::class, MoneyTransactionNavigationModule::class]
+    modules = [
+        MediatorsBindings::class,
+        CreateAccountNavigationModule::class,
+        MoneyTransactionNavigationModule::class,
+        CreateCurrencyNavigationModule::class,
+        ReportsNavigationModule::class
+    ]
 )
 interface FacadeComponent : ProvidersFacade {
 

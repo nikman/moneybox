@@ -10,16 +10,9 @@ interface CreateAccountModule {
 
     /*@Binds
     @Singleton
-    fun bindsCache(memoryCache: HabitsMemoryCacheImpl): HabitsMemoryCache*/
+    fun bindsCache(memoryCache: MemoryCacheImpl): MemoryCache*/
 
     @Binds
-    fun bindsHomeViewModelFactory(homeViewModelFactory: CreateAccountViewModelFactory): ViewModelProvider.Factory
+    fun bindsCreateAccountViewModelFactory(createAccountViewModelFactory: CreateAccountViewModelFactory): ViewModelProvider.Factory
 
-    /*companion object{
-
-        @Provides
-        fun provideMediator1(map: Map<Class<*>, @JvmSuppressWildcards Provider<Any>>): CreateAccountMediator {
-            return map[CreateAccountMediator::class.java]!!.get() as CreateAccountMediator
-        }
-    }*/
 }

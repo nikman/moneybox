@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="expence">Расход</string>
+    <string name="income">Доход</string>
+    <string name="transfer">Перевод</string>
+    <string name="category">Категория</string>
+    <string name="amount">Сумма</string>
+    <string name="note">Комментарий</string>
+    <string name="save">Сохранить</string>
+</resources>

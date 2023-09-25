@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Moneybox</string>
+    <string name="title_home">Счета</string>
+    <string name="title_reports">Транзации</string>
+    <string name="title_currencies">Валюты</string>
+    <string name="add">Добавить</string>
+    <string name="main_screen_title">Счета</string>
+    <string name="reports_screen_title">Транзации</string>
+    <string name="currencies_screen_title">Валюты</string>
+</resources>

@@ -34,25 +34,24 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 
     // dagger
-    implementation("com.google.dagger:dagger:2.47")
-    kapt("com.google.dagger:dagger-compiler:2.47")
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler.kapt)
     // room
-    implementation("androidx.room:room-runtime:2.5.2")
-    ksp("androidx.room:room-compiler:2.5.2")
-    implementation("androidx.room:room-ktx:2.5.2")
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
     //retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.converter.gson)
 
-    //implementation("androidx.work:work-runtime-ktx")
 
     api(project(mapOf("path" to ":core_api")))
 
