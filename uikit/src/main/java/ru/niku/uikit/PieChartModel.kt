@@ -1,6 +1,7 @@
 package ru.niku.uikit
 
 import android.graphics.Color
+import android.graphics.CornerPathEffect
 import android.graphics.Paint
 
 class PieChartModel(
@@ -8,7 +9,8 @@ class PieChartModel(
     var percentOfCircle: Float = 0F,
     var absPercentOfCircle: Float = 0F,
     var colorOfLine: Int = 0,
-    var valueModel: BaseValueModel
+    var valueModel: BaseValueModel,
+    val paintRound: Boolean = true
     ) {
 
     var paint: Paint
@@ -40,8 +42,16 @@ class PieChartModel(
         paint = Paint()
         paint.color = colorOfLine
         paint.isAntiAlias = true
-        paint.style = Paint.Style.FILL_AND_STROKE
+        //paint.style = Paint.Style.FILL_AND_STROKE
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = 16f
         paint.isDither = true
+
+        if (paintRound){
+            paint.strokeJoin = Paint.Join.ROUND
+            paint.strokeCap = Paint.Cap.ROUND
+            paint.pathEffect = CornerPathEffect(8F)
+        }
 
     }
 

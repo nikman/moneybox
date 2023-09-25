@@ -44,7 +44,7 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
     private var circleStrokeWidth: Float = context.dpToPixels(5)
     private var circleRadius: Float = 0F
     private var circlePadding: Float = context.dpToPixels(5)
-    private var circleSectionSpace: Float = 0F
+    private var circleSectionSpace: Float = 2F
     private var circleCenterX: Float = 0F
     private var circleCenterY: Float = 0F
     private var numberTextPaint: TextPaint = TextPaint()
@@ -54,8 +54,8 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
     private var textStartY: Float = 0F
     private var textHeight: Int = 0
     private var textCircleRadius: Float = context.dpToPixels(4)
-    private var textAmountStr: String = ""
-    private var textAmountY: Float = 0F
+    private var textAmountStr: String = "ВСЕГО"
+    private var textAmountY: Float = 15F
     private var textAmountXNumber: Float = 0F
     private var textAmountXDescription: Float = 0F
     private var textAmountYDescription: Float = 0F
@@ -78,10 +78,10 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
         //@StyleRes val styleTextAppearance = typedValue.data
 
         // Задаем базовые значения и конвертируем в px
-        val textAmountSize: Float = context.spToPixels(5)
+        val textAmountSize: Float = context.spToPixels(16)
         val textNumberSize: Float = context.spToPixels(14)
         val textDescriptionSize: Float = context.spToPixels(14)
-        val textAmountColor: Int = Color.WHITE
+        val textAmountColor: Int = colorForeground
         val textNumberColor: Int = colorForeground
         val textDescriptionColor: Int = colorForegroundInverse // Color.GRAY
 
@@ -173,7 +173,7 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
 
         var startAt = circleSectionSpace
         percentageCircleList = dataList.mapIndexed { index, payLoad ->
-            var percent = payLoad.amount * 100 / totalAmount.toFloat()
+            var percent = payLoad.amount * 100 / totalAmount.toFloat() - circleSectionSpace
             percent = if (percent < 0F) 0.0 else percent
 
             val resultModel = PieChartModel(
@@ -216,14 +216,14 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
                     circleRect,
                     percent.percentToStartAt,
                     percent.percentOfCircle,
-                    true,
+                    false,
                     percent.paint)
             } else if (animationSweepAngle > percent.percentToStartAt) {
                 canvas.drawArc(
                     circleRect,
                     percent.percentToStartAt,
                     animationSweepAngle - percent.percentToStartAt,
-                    true,
+                    false,
                     percent.paint)
             }
 
@@ -253,6 +253,10 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
                 textBuffY += staticLayout.height + marginTextSecond
             }
         }
+
+        // Отображаем текстовый результат в центре круговой диаграммы
+        canvas.drawText(totalAmount.toString(), textAmountXNumber, textAmountY - 20, amountTextPaint)
+        canvas.drawText(textAmountStr, textAmountXDescription, textAmountYDescription, descriptionTextPaint)
 
     }
 
@@ -284,7 +288,7 @@ class PieChartView(context: Context, attributeSet: AttributeSet):
             bottom = height / 2 + circleRadius
         }
 
-        circleCenterX = (circleRadius * 2 + circlePadding + circlePadding) / 2
+        circleCenterX = (circleRadius * 2 + circlePadding * 2) / 2
         circleCenterY = (height / 2 + circleRadius + (height / 2 - circleRadius)) / 2
 
         textAmountY = circleCenterY
