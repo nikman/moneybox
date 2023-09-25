@@ -14,7 +14,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">moneybox</h3>
@@ -61,9 +61,9 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## О проекте
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/nikman/moneybox)
+[![Moneybox screenshot][moneybox]](https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-03-42.JPG)
 
 Приложение для учета личных финансов
 
@@ -75,40 +75,39 @@
 
 Приложение поддерживает темную и светлую тему оформления.
 
+<table>
+  <td>
+      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-03-42.JPG" alt="main screen" width="280" height="600">
+      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-03-45.JPG" alt="main screen" width="280" height="600">
+      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-04-06.JPG" alt="main screen" width="280" height="600">
+  </td>
+</table>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+### Технологии
 
-### Built With
-
-* [![Kotlin][Kotlin]][https://kotlinlang.org/]
-* [![Material][Material]][https://m3.material.io/]
+* Kotlin
+* https://m3.material.io/
+* dagger2
+* retrofit
+* room
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Установка
 
 На данный момент для установки приложения необходимо импортировать проект в android studio и установить на виртуальное или реальное устройство
 
-### Prerequisites
-
-Android studio последних версий (проект написан в Giraffe 2022.3.1 Patch 1)
-
-### Installation
-
-1. Скопировать путь к git репозитория / сделать форк и скопировать путь к репозиторию форка
-2. Импортировать в android studio
-3. После успешного импорта запустить
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Возможности
 
 Ввод счетов (наличные, карты, счета в банке)
 
@@ -120,7 +119,7 @@ Android studio последних версий (проект написан в G
 
 
 <!-- ROADMAP -->
-## Roadmap
+## Планы
 
 - [x] Отображение информации о курсах валют
 - [ ] Добавление возможности редактирования счетов
@@ -128,47 +127,16 @@ Android studio последних версий (проект написан в G
 - [ ] Добавление возможности удаления данных
 - [ ] Добавление дополнительных аналитических отчетов
 - [ ] Добавление возможности учета в рамках бюджетов
-- [ ] Многоязыковая поддержка
-    - [ ] Немецкий
-    - [ ] Китайский
 
 Проверьте [открытые проблемы](https://github.com/nikman/moneybox/issues)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- CONTACT -->
-## Contact
+## Контакты
 
-nikman - [@andynikman](https://twitter.com/your_username) - niku.andrew@gmail.com
+Andrew - [@andynikman](https://t.me/@andynikman) - niku.andrew@gmail.com
 
 Ссылка на проект: [https://github.com/nikman/moneybox](https://github.com/nikman/moneybox)
 
@@ -182,8 +150,6 @@ nikman - [@andynikman](https://twitter.com/your_username) - niku.andrew@gmail.co
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
 * [Шаблон readme.md](https://raw.githubusercontent.com/othneildrew/Best-README-Template)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
 * [GitHub Pages](https://pages.github.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
