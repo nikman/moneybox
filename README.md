@@ -33,37 +33,16 @@
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Содержание</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">О проекте</a>
-      <ul>
-        <li><a href="#built-with">Технологии</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Начало</a>
-      <ul>
-        <li><a href="#prerequisites">Подготовка</a></li>
-        <li><a href="#installation">Установка</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Использование</a></li>
-    <li><a href="#roadmap">Карта</a></li>
-    <li><a href="#contributing">Распространение</a></li>
-    <li><a href="#license">Лицензия</a></li>
-    <li><a href="#contact">Контакты</a></li>
-  </ol>
-</details>
-
-
-
 <!-- ABOUT THE PROJECT -->
 ## О проекте
 
-[![Moneybox screenshot][moneybox]](https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-03-42.JPG)
+<table>
+  <td>
+      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-03-42.JPG" alt="main screen" width="280" height="600">
+      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-03-45.JPG" alt="main screen" width="280" height="600">
+      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-04-06.JPG" alt="main screen" width="280" height="600">
+  </td>
+</table>
 
 Приложение для учета личных финансов
 
@@ -74,14 +53,6 @@
 * Информация о валютах с текущими курсами
 
 Приложение поддерживает темную и светлую тему оформления.
-
-<table>
-  <td>
-      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-03-42.JPG" alt="main screen" width="280" height="600">
-      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-03-45.JPG" alt="main screen" width="280" height="600">
-      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-04-06.JPG" alt="main screen" width="280" height="600">
-  </td>
-</table>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
