@@ -1,7 +1,6 @@
 package ru.niku.main
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -9,12 +8,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ru.niku.coreapi.CurrenciesNavigator
 import ru.niku.coreapi.HomeNavigator
 import ru.niku.coreapi.MoneyboxApp
-import ru.niku.reports_api.ReportsNavigator
 import ru.niku.create_account_api.CreateAccountMediator
 import ru.niku.create_currency_api.CreateCurrencyMediator
 import ru.niku.main.databinding.ActivityMainBinding
 import ru.niku.main.di.MainComponent
 import ru.niku.money_transaction_api.MoneyTransactionMediator
+import ru.niku.reports_api.ReportsNavigator
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -149,7 +148,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+
         super.onRestoreInstanceState(savedInstanceState)
+
         val mainNavViewId = savedInstanceState.getInt(SAVED_STATE_ID, R.id.navigation_home)
         val fab = binding.fab
         val ab: ActionBar? = supportActionBar
@@ -165,6 +166,6 @@ class MainActivity : AppCompatActivity() {
                 navigateToCurresciesScreen(ab, fab, openCreateCurrencyScreenListener)
             }
         }
-
     }
+
 }
