@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">home</string>
+    <string name="app_name">Moneybox</string>
     <string name="add_account">Добавить</string>
     <string name="available">Всего доступно:</string>
 </resources>

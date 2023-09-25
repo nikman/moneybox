@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">main</string>
+    <string name="app_name">Moneybox</string>
     <string name="title_home">Счета</string>
     <string name="title_reports">Транзации</string>
     <string name="title_currencies">Валюты</string>
