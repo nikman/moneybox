@@ -54,12 +54,15 @@ dependencies {
     implementation(project(mapOf("path" to ":network_api")))
     implementation(project(mapOf("path" to ":network_impl")))
     implementation(project(mapOf("path" to ":reports_api")))
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.espresso.core)
+    implementation(libs.androidx.appcompat)
 
-    implementation(libs.dagger)
+    api(libs.dagger)
     kapt(libs.dagger.compiler.kapt)
 
 }
