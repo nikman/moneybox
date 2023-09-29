@@ -116,9 +116,7 @@ Andrew - [@andynikman](https://t.me/@andynikman) - niku.andrew@gmail.com
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+## Использованные ресурсы
 
 * [Шаблон readme.md](https://raw.githubusercontent.com/othneildrew/Best-README-Template)
 * [GitHub Pages](https://pages.github.com)
