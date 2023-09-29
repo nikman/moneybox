@@ -7,7 +7,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [MoneyTransactionModule::class],
+    modules = [MoneyTransactionModule::class, MoneyTransactionUtilsModule::class],
     dependencies = [ProvidersFacade::class]
 )
 interface MoneyTransactionComponent {

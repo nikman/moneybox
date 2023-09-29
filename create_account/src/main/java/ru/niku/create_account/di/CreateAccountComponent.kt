@@ -7,7 +7,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [CreateAccountModule::class],
+    modules = [CreateAccountModule::class, CreateAccountUtilsModule::class],
     dependencies = [ProvidersFacade::class]
 )
 interface CreateAccountComponent {
