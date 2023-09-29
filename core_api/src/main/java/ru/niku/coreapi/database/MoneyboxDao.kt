@@ -42,7 +42,7 @@ interface MoneyboxDao {
     @Query("SELECT * FROM TRANSACTIONS ORDER BY amount DESC")
     suspend fun getTopBiggestTransactions(): List<MoneyTransactionWithProperties>
 
-    @Query("SELECT category, SUM(amount) as amount FROM TURNOVERS WHERE ttype = :ttype GROUP BY category")
+    @Query("SELECT category, SUM(amount) as amount FROM TURNOVERS WHERE ttype = :ttype GROUP BY category ORDER BY SUM(amount)")
     suspend fun getExpencesByCategory(ttype: TransactionType): List<ExpencesByCategory>
 
     @Insert
