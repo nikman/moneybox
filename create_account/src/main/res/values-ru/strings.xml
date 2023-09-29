@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">create_account</string>
+    <string name="save" translatable="false">Сохранить</string>
+    <string name="account_title" translatable="false">Имя счета</string>
+    <string name="account_note" translatable="false">Комментарий</string>
+</resources>
