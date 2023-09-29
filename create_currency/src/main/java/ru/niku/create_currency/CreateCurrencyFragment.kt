@@ -17,7 +17,8 @@ import javax.inject.Inject
 
 class CreateCurrencyFragment: Fragment() {
 
-    private val currency: Currency = Currency()
+    @Inject
+    lateinit var currency: Currency
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory

@@ -7,7 +7,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [CreateCurrencyModule::class],
+    modules = [CreateCurrencyModule::class, CreateCurrencyUtilsModule::class],
     dependencies = [ProvidersFacade::class]
 )
 interface CreateCurrencyComponent {

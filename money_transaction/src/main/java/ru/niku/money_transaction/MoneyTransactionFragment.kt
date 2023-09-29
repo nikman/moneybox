@@ -28,13 +28,6 @@ import javax.inject.Inject
 
 class MoneyTransactionFragment: Fragment() {
 
-    private val uuid = UUID.randomUUID()
-
-    private val transaction =
-        MoneyTransaction(transactionUuid = uuid.toString(), date = Calendar.getInstance().time)
-    private val turnover =
-        Turnovers(transactionUuid = uuid.toString())
-
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -46,10 +39,20 @@ class MoneyTransactionFragment: Fragment() {
 
     private val binding get() = _binding!!
 
+    @Inject
+    lateinit var uuid: UUID
+
+    private lateinit var transaction: MoneyTransaction
+    private lateinit var turnover: Turnovers
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MoneyTransactionComponent.create((requireActivity().application as MoneyboxApp).getFacade())
             .inject(this)
+        transaction =
+            MoneyTransaction(transactionUuid = uuid.toString(), date = Calendar.getInstance().time)
+        turnover =
+            Turnovers(transactionUuid = uuid.toString())
     }
 
     override fun onCreateView(
@@ -91,6 +94,7 @@ class MoneyTransactionFragment: Fragment() {
             }
         }
 
+        // todo
         /*val toggleButtonTransfer = binding.buttonTransfer
         toggleButtonTransfer.apply {
             setOnClickListener {

@@ -17,7 +17,8 @@ import javax.inject.Inject
 
 class CreateAccountFragment: Fragment() {
 
-    private val account: Account = Account()
+    @Inject
+    lateinit var account: Account
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
