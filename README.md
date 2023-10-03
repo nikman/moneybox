@@ -29,9 +29,9 @@
 
 <table>
   <td>
-      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-03-42.JPG" alt="main screen" width="280" height="600">
-      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-03-45.JPG" alt="main screen" width="280" height="600">
-      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-04-06.JPG" alt="main screen" width="280" height="600">
+      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-03-42.JPG" alt="main screen" width="260" height="590">
+      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-03-45.JPG" alt="main screen" width="260" height="590">
+      <img src="https://github.com/nikman/moneybox/blob/dev/app/src/main/assets/2023-09-26%2000-04-06.JPG" alt="main screen" width="260" height="590">
   </td>
 </table>
 
