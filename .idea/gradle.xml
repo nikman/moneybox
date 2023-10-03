@@ -24,14 +24,10 @@
             <option value="$PROJECT_DIR$/main" />
             <option value="$PROJECT_DIR$/money_transaction" />
             <option value="$PROJECT_DIR$/money_transaction_api" />
-            <option value="$PROJECT_DIR$/network" />
-            <option value="$PROJECT_DIR$/network_api" />
-            <option value="$PROJECT_DIR$/network_impl" />
             <option value="$PROJECT_DIR$/reports" />
             <option value="$PROJECT_DIR$/reports_api" />
             <option value="$PROJECT_DIR$/uiatoms" />
             <option value="$PROJECT_DIR$/uikit" />
-            <option value="$PROJECT_DIR$/wallet" />
           </set>
         </option>
       </GradleProjectSettings>

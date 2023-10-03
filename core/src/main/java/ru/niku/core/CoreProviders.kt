@@ -7,6 +7,7 @@ import ru.niku.coreimpl.DaggerDatabaseComponent
 import ru.niku.coreimpl.DaggerNetworkComponent
 
 object CoreProviders {
+
     fun createDatabaseBuilder(appProvider: AppProvider): DatabaseProvider {
         return DaggerDatabaseComponent.builder().appProvider(appProvider).build()
     }

@@ -23,7 +23,7 @@ data class MoneyTransaction(
     val transactionUuid: String = "",
     var date: Date = Date(),
     var multiplier: Int = -1,
-    var ttype: TransactionType = TransactionType.EXPENCE,
+    var ttype: TransactionType = TransactionType.EXPENSE,
     //@ColumnInfo(name = "account_id", defaultValue = "")
     var account_id: Long = 0,
     var amount: Double = 0.0,
@@ -32,10 +32,10 @@ data class MoneyTransaction(
 ) {
     companion object {
         fun getAmount(amount: Double, ttype: TransactionType): Double {
-            return if (ttype == TransactionType.EXPENCE) -1 * amount else amount
+            return if (ttype == TransactionType.EXPENSE) -1 * amount else amount
         }
         fun getMultiplier(ttype: TransactionType): Int {
-            return if (ttype == TransactionType.EXPENCE) -1 else 1
+            return if (ttype == TransactionType.EXPENSE) -1 else 1
         }
     }
 }

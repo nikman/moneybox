@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.niku.coreapi.TransactionType
 import ru.niku.coreapi.database.MoneyboxDao
-import ru.niku.coreapi.dto.ExpencesByCategory
+import ru.niku.coreapi.dto.ExpensesByCategory
 import ru.niku.coreapi.dto.MoneyTransactionWithProperties
 import javax.inject.Inject
 
@@ -23,12 +23,12 @@ class ReportsViewModel constructor(private val moneyboxDao: MoneyboxDao): ViewMo
         }
     }
 
-    private val _expencesByCategory = MutableLiveData<List<ExpencesByCategory>>()
-    val expencesByCategory: LiveData<List<ExpencesByCategory>> = _expencesByCategory
+    private val _expensesByCategory = MutableLiveData<List<ExpensesByCategory>>()
+    val expensesByCategory: LiveData<List<ExpensesByCategory>> = _expensesByCategory
 
     fun getExpencesByCategory() {
         viewModelScope.launch {
-            _expencesByCategory.value = moneyboxDao.getExpencesByCategory(TransactionType.EXPENCE)
+            _expensesByCategory.value = moneyboxDao.getExpensesByCategory(TransactionType.EXPENSE)
         }
     }
 

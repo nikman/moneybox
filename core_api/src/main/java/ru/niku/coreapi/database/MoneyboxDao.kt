@@ -9,7 +9,7 @@ import ru.niku.coreapi.TransactionType
 import ru.niku.coreapi.dto.Account
 import ru.niku.coreapi.dto.AccountsWithBalance
 import ru.niku.coreapi.dto.Currency
-import ru.niku.coreapi.dto.ExpencesByCategory
+import ru.niku.coreapi.dto.ExpensesByCategory
 import ru.niku.coreapi.dto.MoneyTransaction
 import ru.niku.coreapi.dto.MoneyTransactionWithProperties
 import ru.niku.coreapi.dto.Turnovers
@@ -43,7 +43,7 @@ interface MoneyboxDao {
     suspend fun getTopBiggestTransactions(): List<MoneyTransactionWithProperties>
 
     @Query("SELECT category, SUM(amount) as amount FROM TURNOVERS WHERE ttype = :ttype GROUP BY category ORDER BY SUM(amount)")
-    suspend fun getExpencesByCategory(ttype: TransactionType): List<ExpencesByCategory>
+    suspend fun getExpensesByCategory(ttype: TransactionType): List<ExpensesByCategory>
 
     @Insert
     suspend fun addAccount(account: Account)

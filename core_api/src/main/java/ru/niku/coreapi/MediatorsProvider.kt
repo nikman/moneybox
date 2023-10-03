@@ -10,7 +10,5 @@ interface MediatorsProvider {
 
     fun provideCurrenciesMediator(): CurrenciesNavigator
 
-    fun provideWalletMediator(): WalletNavigator
-
     fun mediatorsMap(): Map<Class<*>, @JvmSuppressWildcards Provider<Any>>
 }

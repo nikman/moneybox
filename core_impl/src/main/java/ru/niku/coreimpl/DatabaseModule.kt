@@ -23,40 +23,6 @@ private const val DATABASE_NAME = "MONEYBOX_DB"
 @Module
 class DatabaseModule {
 
-    /*lateinit var moneyboxDatabase: MoneyboxDatabase
-
-    private var rdc: RoomDatabase.Callback = object : RoomDatabase.Callback() {
-        override fun onCreate(db: SupportSQLiteDatabase) {
-
-            var moneyboxDao: MoneyboxDao
-
-            val viewModelJob = SupervisorJob()
-            val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-
-            Executors.newSingleThreadScheduledExecutor().execute {
-
-                val currencyRub =
-                    Currency(0, "RUB", "rub")
-                //storeCurrencyId(context, currencyRubUUID)
-
-                uiScope.launch {
-                    moneyboxDatabase.moneyboxDao().addCurrency(currencyRub)
-                }
-
-                val accountCash =
-                    Account(
-                        0, "Cash", "pocket",
-                        true, true, 0, 0)
-
-                uiScope.launch {
-                    moneyboxDatabase.moneyboxDao().addAccount(accountCash)
-                }
-
-            }
-        }
-
-    }*/
-
     @Provides
     @Reusable
     fun provideMoneyboxDao(moneyboxDatabaseContract: MoneyboxDatabaseContract): MoneyboxDao {
@@ -72,17 +38,6 @@ class DatabaseModule {
             MoneyboxDatabase::class.java,
             DATABASE_NAME)
             .fallbackToDestructiveMigration()
-            /*.addCallback(
-                object : RoomDatabase.Callback() {
-                    override fun onCreate(db: SupportSQLiteDatabase) {
-                        super.onCreate(db)
-                        val request = OneTimeWorkRequestBuilder<SeedDatabaseWorker>()
-                            .setInputData(workDataOf(KEY_FILENAME to PLANT_DATA_FILENAME))
-                            .build()
-                        WorkManager.getInstance(context).enqueue(request)
-                    }
-                })*/
-            //.addMigrations(migrationFrom11To12)
             .build()
     }
 

@@ -14,6 +14,6 @@ data class Turnovers(
     var accountId: Long = 0,
     var amount: Double = 0.0,
     var multiplier: Int = -1,
-    var ttype: TransactionType = TransactionType.EXPENCE,
+    var ttype: TransactionType = TransactionType.EXPENSE,
     var category: String = ""
 )

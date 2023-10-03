@@ -10,7 +10,7 @@ class MoneyTransactionTest {
     @Test
     fun checkMultiplier() {
         val expectedMultiplier = -1
-        val actualMultiplier = MoneyTransaction.getMultiplier(TransactionType.EXPENCE)
+        val actualMultiplier = MoneyTransaction.getMultiplier(TransactionType.EXPENSE)
 
         assertEquals(expectedMultiplier, actualMultiplier)
     }
@@ -18,7 +18,7 @@ class MoneyTransactionTest {
     @Test
     fun checkAmount() {
         val expectedAmount = -100.0
-        val actualAmount = MoneyTransaction.getAmount(100.0, TransactionType.EXPENCE)
+        val actualAmount = MoneyTransaction.getAmount(100.0, TransactionType.EXPENSE)
 
         assertEquals(expectedAmount, actualAmount, 0.1)
     }

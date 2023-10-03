@@ -13,12 +13,11 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.niku.coreapi.MoneyboxApp
 import ru.niku.coreapi.TransactionType
-import ru.niku.coreapi.dto.ExpencesByCategory
+import ru.niku.coreapi.dto.ExpensesByCategory
 import ru.niku.coreapi.dto.MoneyTransactionWithProperties
 import ru.niku.reports.R
 import ru.niku.reports.databinding.FragmentReportsBinding
@@ -84,7 +83,7 @@ class ReportsFragment : Fragment() {
 
         viewModel.getTopTransactions()
 
-        viewModel.expencesByCategory.observe(viewLifecycleOwner) {
+        viewModel.expensesByCategory.observe(viewLifecycleOwner) {
                 expences -> expences?.let { updateReport(expences) }
         }
 
@@ -98,7 +97,7 @@ class ReportsFragment : Fragment() {
 
     }
 
-    private fun updateReport(expences: List<ExpencesByCategory>) {
+    private fun updateReport(expences: List<ExpensesByCategory>) {
 
         val pieChart = binding.pieChartView
 
@@ -158,7 +157,7 @@ class ReportsFragment : Fragment() {
             categoryTextView.text = this.transaction.transaction.category
 
             when (this.transaction.transaction.ttype) {
-                TransactionType.EXPENCE -> amountTextView.setTextColor(colorError)
+                TransactionType.EXPENSE -> amountTextView.setTextColor(colorError)
                 TransactionType.INCOME -> amountTextView.setTextColor(colorAccent)
                 TransactionType.TRANSFER -> amountTextView.setTextColor(Color.BLUE)
             }

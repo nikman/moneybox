@@ -21,7 +21,6 @@ class NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
             .client(okHttpClient)
-            //.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
 
@@ -43,7 +42,6 @@ class NetworkModule {
         }
         return clientBuilder.build()
     }
-
 
     @Singleton
     @Provides

@@ -86,7 +86,7 @@ class MoneyTransactionFragment: Fragment() {
         val toggleButtonExpence = binding.buttonExpence
         toggleButtonExpence.apply {
             setOnClickListener {
-                val ttype = TransactionType.EXPENCE
+                val ttype = TransactionType.EXPENSE
                 transaction.multiplier = MoneyTransaction.getMultiplier(ttype)
                 turnover.multiplier = MoneyTransaction.getMultiplier(ttype)
                 transaction.ttype = ttype
