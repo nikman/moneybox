@@ -47,28 +47,16 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ### Технологии
 
 * Kotlin
-* https://m3.material.io/
 * dagger2
-* retrofit
+* retrofit2
 * room
+* Kotlin Coroutines
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
-## Установка
-
-На данный момент для установки приложения необходимо импортировать проект в android studio и установить на виртуальное или реальное устройство
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
 ## Возможности
 
 Ввод счетов (наличные, карты, счета в банке)
@@ -78,7 +66,6 @@
 Добавление валют, просмотр курсов валют
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- ROADMAP -->
 ## Планы
@@ -94,17 +81,12 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- CONTACT -->
 ## Контакты
 
-Andrew - [@andynikman](https://t.me/@andynikman) - niku.andrew@gmail.com
-
-Ссылка на проект: [https://github.com/nikman/moneybox](https://github.com/nikman/moneybox)
+Andrew - niku.andrew@gmail.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- ACKNOWLEDGMENTS -->
 ## Использованные ресурсы
