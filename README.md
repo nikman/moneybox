@@ -77,7 +77,7 @@
 - [ ] Добавление дополнительных аналитических отчетов
 - [ ] Добавление возможности учета в рамках бюджетов
 
-Проверьте [открытые проблемы](https://github.com/nikman/moneybox/issues)
+[Открытые проблемы](https://github.com/nikman/moneybox/issues)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
