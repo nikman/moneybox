@@ -12,7 +12,8 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-    private val BASE_URL = "https://cdn.jsdelivr.net/gh/fawazahmed0/"
+    //private val BASE_URL = "https://cdn.jsdelivr.net/gh/fawazahmed0/"
+    private val BASE_URL = "https://v6.exchangerate-api.com/v6/fa8aa164f74047986b2a930a/"
 
     @Singleton
     @Provides

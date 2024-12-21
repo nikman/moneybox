@@ -11,7 +11,7 @@ import ru.niku.coreapi.dto.Turnovers
 
 @Database(
     entities = [Account::class, Currency::class, Turnovers::class, MoneyTransaction::class],
-    version = 20,
+    version = 23,
     exportSchema = false)
 @TypeConverters(MoneyboxTypeConverters::class)
 abstract class MoneyboxDatabase : RoomDatabase(), MoneyboxDatabaseContract

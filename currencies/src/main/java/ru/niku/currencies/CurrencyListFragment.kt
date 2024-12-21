@@ -122,7 +122,7 @@ class CurrencyListFragment : Fragment() {
 
             viewLifecycleOwner.lifecycleScope.launch {
                 val b = viewModel.getCurrencyValue(currency.code)
-                codeTextView.text = b.body()?.rub.toString()
+                codeTextView.text = b.body()?.conversionrate.toString()
             }
 
         }
