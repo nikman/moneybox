@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.ColorInt
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -116,6 +117,7 @@ class HomeFragment : Fragment() {
 
         override fun onClick(v: View?) {
             //callbacks?.onAccountSelected(account.account_id)
+            Toast.makeText(context, this.titleTextView.text, Toast.LENGTH_LONG).show()
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
