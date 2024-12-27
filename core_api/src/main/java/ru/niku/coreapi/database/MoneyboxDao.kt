@@ -36,12 +36,15 @@ interface MoneyboxDao {
     @Query("SELECT accountId, SUM(amount) as balance FROM TURNOVERS GROUP BY accountId")
     suspend fun getAccountsBalance(): List<AccountsWithBalance>
 
+    @Transaction
     @Query("SELECT * FROM TRANSACTIONS ORDER BY date DESC LIMIT 20")
     suspend fun getTopTransactions(): List<MoneyTransactionWithProperties>
 
+    /*@Transaction
     @Query("SELECT * FROM TRANSACTIONS ORDER BY amount DESC")
-    suspend fun getTopBiggestTransactions(): List<MoneyTransactionWithProperties>
+    suspend fun getTopBiggestTransactions(): List<MoneyTransactionWithProperties>*/
 
+    @Transaction
     @Query("SELECT category, SUM(amount) as amount FROM TURNOVERS WHERE ttype = :ttype GROUP BY category ORDER BY SUM(amount)")
     suspend fun getExpencesByCategory(ttype: TransactionType): List<ExpencesByCategory>
 

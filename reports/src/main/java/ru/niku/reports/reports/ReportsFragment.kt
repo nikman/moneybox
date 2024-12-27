@@ -13,7 +13,6 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.niku.coreapi.MoneyboxApp
@@ -154,7 +153,7 @@ class ReportsFragment : Fragment() {
             accountTextView.text = this.transaction.accountSource.toString()
             dateTextView.text =
                 SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(this.transaction.transaction.date)
-            amountTextView.text = this.transaction.transaction.amount.toString()
+            amountTextView.text = String.format(Locale.getDefault(), "%.2f", this.transaction.transaction.amount)
             categoryTextView.text = this.transaction.transaction.category
 
             when (this.transaction.transaction.ttype) {
